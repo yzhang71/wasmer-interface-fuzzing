@@ -12,7 +12,7 @@ impl Config for NoImportsConfig {
     fn max_imports(&self) -> usize {
         0
     }
-    fn max_memory_pages(&self) -> u32 {
+    fn max_memory_pages(&self, is_64: bool) -> u64 {
         // https://github.com/wasmerio/wasmer/issues/2187
         65535
     }
@@ -24,12 +24,12 @@ impl Config for NoImportsConfig {
 struct WasmSmithModule(ConfiguredModule<NoImportsConfig>);
 impl std::fmt::Debug for WasmSmithModule {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.write_str(&wasmprinter::print_bytes(self.0.to_bytes()).unwrap())
+        f.write_str(&wasmprinter::print_bytes(self.0.module.to_bytes()).unwrap())
     }
 }
 
 fuzz_target!(|module: WasmSmithModule| {
-    let wasm_bytes = module.0.to_bytes();
+    let wasm_bytes = module.0.module.to_bytes();
 
     if let Ok(path) = std::env::var("DUMP_TESTCASE") {
         use std::fs::File;
