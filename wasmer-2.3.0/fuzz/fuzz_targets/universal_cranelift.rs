@@ -40,8 +40,6 @@ fuzz_target!(|module: WasmSmithModule| {
     }
 
     let mut compiler = Cranelift::default();
-    compiler.canonicalize_nans(true);
-    compiler.enable_verifier();
     let engine = Universal::new(compiler).engine();
     let store = Store::new(&engine);
     let module = Module::new(&store, &wasm_bytes).unwrap();
