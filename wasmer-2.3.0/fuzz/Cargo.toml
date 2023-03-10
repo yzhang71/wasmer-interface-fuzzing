@@ -36,7 +36,10 @@ anyhow = "1"
 # wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-data/crates/wasm-smith" }
 
 # code fuzz driver
-wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-code/crates/wasm-smith" }
+# wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-code/crates/wasm-smith" }
+
+# type fuzz driver
+wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-type/crates/wasm-smith" }
 
 libfuzzer-sys = "0.4.0"
 wasmer = { path = "../lib/api" }
@@ -111,6 +114,11 @@ required-features = ["universal", "cranelift"]
 [[bin]]
 name = "universal_cranelift_code"
 path = "fuzz_targets/universal_cranelift_code.rs"
+required-features = ["universal", "cranelift"]
+
+[[bin]]
+name = "universal_cranelift_type"
+path = "fuzz_targets/universal_cranelift_type.rs"
 required-features = ["universal", "cranelift"]
 
 [[bin]]
