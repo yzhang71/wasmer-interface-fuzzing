@@ -10,7 +10,7 @@ cargo-fuzz = true
 
 [dependencies]
 anyhow = "1"
-wasm-smith = "0.4.4"
+wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-main/crates/wasm-smith" }
 libfuzzer-sys = "0.4.0"
 wasmer = { path = "../lib/api" }
 wasmer-compiler-cranelift = { path = "../lib/compiler-cranelift", optional = true }
@@ -39,6 +39,11 @@ required-features = ["universal"]
 [[bin]]
 name = "universal_cranelift"
 path = "fuzz_targets/universal_cranelift.rs"
+required-features = ["universal", "cranelift"]
+
+[[bin]]
+name = "universal_cranelift_raw"
+path = "fuzz_targets/universal_cranelift_raw.rs"
 required-features = ["universal", "cranelift"]
 
 [[bin]]
