@@ -347,7 +347,7 @@ impl Module {
 
         self.pre_fill_types();
 
-        self.pre_fill_globals();
+        // self.pre_fill_globals();
 
         self.pre_fill_tables();
 
