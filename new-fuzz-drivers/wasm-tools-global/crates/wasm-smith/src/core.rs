@@ -357,7 +357,7 @@ impl Module {
 
         self.pre_fill_funcs();
 
-        self.pre_fill_elems();
+        // self.pre_fill_elems();
 
         self.pre_fill_data();
 
@@ -387,7 +387,7 @@ impl Module {
         self.arbitrary_globals(u)?;
         // self.arbitrary_exports(u)?;
         // self.arbitrary_start(u)?;
-        // self.arbitrary_elems(u)?;
+        self.arbitrary_elems(u)?;
         // self.arbitrary_data(u)?;
         // self.arbitrary_code(u, allow_invalid)?;
         Ok(())
@@ -496,6 +496,10 @@ impl Module {
     }
 
     fn pre_fill_tags(&mut self) {
+
+        if !self.config.exceptions_enabled() || !self.has_tag_func_types() {
+            return ();
+        }
 
         let fill_tag = vec![TagType { func_type_idx: 0, func_type: Rc::new(FuncType {params: vec![ValType::I32], results: vec![ValType::I32],}),},];
         for t in fill_tag {

@@ -18,7 +18,7 @@ anyhow = "1"
 # wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-func/crates/wasm-smith" }
 
 # global fuzz driver
-wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-func/crates/wasm-smith" }
+wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-global/crates/wasm-smith" }
 
 libfuzzer-sys = "0.4.0"
 wasmer = { path = "../lib/api" }
