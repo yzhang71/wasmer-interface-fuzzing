@@ -47,6 +47,15 @@ anyhow = "1"
 # combine of func code fuzz driver
 # wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-func-code/crates/wasm-smith" }
 
+# combine of func code global type fuzz driver
+# wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-func-code-global-type/crates/wasm-smith" }
+
+# combine of func code table type fuzz driver
+# wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-func-code-table-type/crates/wasm-smith" }
+
+# combine of func code memory type fuzz driver
+# wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-func-code-memory-type/crates/wasm-smith" }
+
 # combine of func code global fuzz driver
 # wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-func-code-global/crates/wasm-smith" }
 
@@ -144,6 +153,21 @@ required-features = ["universal", "cranelift"]
 [[bin]]
 name = "universal_cranelift_func_code"
 path = "fuzz_targets/universal_cranelift_func_code.rs"
+required-features = ["universal", "cranelift"]
+
+[[bin]]
+name = "universal_cranelift_func_code_global_type"
+path = "fuzz_targets/universal_cranelift_func_code_global_type.rs"
+required-features = ["universal", "cranelift"]
+
+[[bin]]
+name = "universal_cranelift_func_code_table_typ"
+path = "fuzz_targets/universal_cranelift_func_code_table_type.rs"
+required-features = ["universal", "cranelift"]
+
+[[bin]]
+name = "universal_cranelift_func_code_memory_typ"
+path = "fuzz_targets/universal_cranelift_func_code_memory_type.rs"
 required-features = ["universal", "cranelift"]
 
 [[bin]]
