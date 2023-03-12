@@ -345,7 +345,7 @@ pub(crate) enum GlobalInitExpr {
 impl Module {
     fn build(&mut self, u: &mut Unstructured, allow_invalid: bool) -> Result<()> {
 
-        // self.pre_fill_types();
+        self.pre_fill_types();
 
         self.pre_fill_globals();
 
@@ -371,9 +371,9 @@ impl Module {
         //
         // This can affect the available capacity for types and such.
         if self.arbitrary_imports_from_available(u)? {
-            self.arbitrary_types(u)?;
+            // self.arbitrary_types(u)?;
         } else {
-            self.arbitrary_types(u)?;
+            // self.arbitrary_types(u)?;
             self.arbitrary_imports(u)?;
         }
 
