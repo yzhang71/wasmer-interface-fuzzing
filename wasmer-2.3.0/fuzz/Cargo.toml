@@ -90,7 +90,10 @@ anyhow = "1"
 # wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-table-data/crates/wasm-smith" }
 
 # combine of memory data fuzz driver
-wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-memory-data/crates/wasm-smith" }
+# wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-memory-data/crates/wasm-smith" }
+
+# combine of func code data fuzz driver
+wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-func-code-data/crates/wasm-smith" }
 
 libfuzzer-sys = "0.4.0"
 wasmer = { path = "../lib/api" }
@@ -255,6 +258,11 @@ required-features = ["universal", "cranelift"]
 [[bin]]
 name = "universal_cranelift_memory_data"
 path = "fuzz_targets/universal_cranelift_memory_data.rs"
+required-features = ["universal", "cranelift"]
+
+[[bin]]
+name = "universal_cranelift_func_code_data"
+path = "fuzz_targets/universal_cranelift_func_code_data.rs"
 required-features = ["universal", "cranelift"]
 
 [[bin]]
