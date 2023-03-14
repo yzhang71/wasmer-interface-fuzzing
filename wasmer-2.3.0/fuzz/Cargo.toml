@@ -105,7 +105,10 @@ anyhow = "1"
 # wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-table-memory/crates/wasm-smith" }
 
 # combine of table global fuzz driver
-wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-table-global/crates/wasm-smith" }
+# wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-table-global/crates/wasm-smith" }
+
+# combine of table elem fuzz driver
+wasm-smith = { path = "../../new-fuzz-drivers/wasm-tools-table-elem/crates/wasm-smith" }
 
 libfuzzer-sys = "0.4.0"
 wasmer = { path = "../lib/api" }
@@ -295,6 +298,11 @@ required-features = ["universal", "cranelift"]
 [[bin]]
 name = "universal_cranelift_table_global"
 path = "fuzz_targets/universal_cranelift_table_global.rs"
+required-features = ["universal", "cranelift"]
+
+[[bin]]
+name = "universal_cranelift_table_elem"
+path = "fuzz_targets/universal_cranelift_table_elem.rs"
 required-features = ["universal", "cranelift"]
 
 [[bin]]
