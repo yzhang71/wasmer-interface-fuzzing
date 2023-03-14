@@ -351,7 +351,7 @@ impl Module {
 
         // self.pre_fill_tables();
 
-        self.pre_fill_memory();
+        // self.pre_fill_memory();
 
         // self.pre_fill_tags();
 
