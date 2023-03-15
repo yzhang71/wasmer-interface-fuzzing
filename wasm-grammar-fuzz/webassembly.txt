@@ -1,0 +1,31 @@
+# WebAssembly Grammar
+# --------------------
+
+value
+<int>
+
+op
+i32.add
+i32.sub
+i32.mul
+i32.div_s
+
+instruction
+get_local $<value>
+set_local $<value>
+<op>
+
+function
+(func $<identifier> (param $a i32) (param $b i32) (result i32)
+    (local $sum i32)
+    <instruction>
+    <instruction>
+    <instruction>
+)
+
+module
+(module
+  <function>
+  (export "<identifier>" (func $<identifier>))
+)
+
