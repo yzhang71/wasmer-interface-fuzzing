@@ -232,7 +232,7 @@ path = "fuzz_targets/universal_cranelift_func_code_table_type.rs"
 required-features = ["universal", "cranelift"]
 
 [[bin]]
-name = "universal_cranelift_func_code_memory_typ"
+name = "universal_cranelift_func_code_memory_type"
 path = "fuzz_targets/universal_cranelift_func_code_memory_type.rs"
 required-features = ["universal", "cranelift"]
 
