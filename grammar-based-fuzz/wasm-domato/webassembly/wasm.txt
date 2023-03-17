@@ -6,10 +6,10 @@
 <funcname> = div
 <funcname> = sub
 <funcname> = mul
-<varname> = $a 
-<varname> = $b
-<varname> = $c 
-<varname> = $d
+<varname> = $var_a 
+<varname> = $var_b
+<varname> = $var_c 
+<varname> = $var_d
 <params> = (param <varname> <num_type>) (param <varname> <num_type>) 
 <params> = (param <varname> <num_type>) (param <varname> <num_type>)
 <params> = (param <varname> <num_type>) (param <varname> <num_type>)
