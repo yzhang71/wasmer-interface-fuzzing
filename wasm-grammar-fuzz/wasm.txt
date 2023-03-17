@@ -1,8 +1,0 @@
-<module> ::= (module <funcs> <exports>)
-<funcs> ::= <func> | <func> <funcs>
-<func> ::= (func $<funcname> <params> <result> <locals> <instructions>)
-<params> ::= (param <varname> i32) | (param <varname> f32) | (param <varname> i64) | (param <varname> f64)
-<result> ::= (result i32) | (result f32) | (result i64) | (result f64)
-<locals> ::= (local <varname> i32) | (local <varname> f32) | (local <varname> i64) | (local <varname> f64)
-<instructions> ::= <instruction> | <instruction> <instructions>
-<exports> ::= (export "<funcname>" (func $<funcname>)) | (export "<funcname>" (func $<funcname>)) <exports>

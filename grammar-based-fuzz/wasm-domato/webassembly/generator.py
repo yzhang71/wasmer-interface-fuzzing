@@ -7,7 +7,7 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(parent_dir)
 from grammar import Grammar
 
-_N_MAIN_LINES = 1000
+_N_MAIN_LINES = 20
 
 def generate_wasm_code(wasmgrammar, num_lines):
     wasm = ''
@@ -20,7 +20,7 @@ def GenerateNewSample(template, wasmgrammar):
     result = template
 
     while '<wasmfuzzer>' in result:
-        numlines = _N_MAIN_LINES
+        num_lines = _N_MAIN_LINES
         result = result.replace(
             '<wasmfuzzer>',
             generate_wasm_code(wasmgrammar, num_lines),
@@ -30,7 +30,7 @@ def GenerateNewSample(template, wasmgrammar):
     return result
 
 def generate_samples(grammar_dir, outfiles):
-    f = open(os.path.join(grammar_dir, 'template.html'))
+    f = open(os.path.join(grammar_dir, 'template.wat'))
     template = f.read()
     f.close()
 
