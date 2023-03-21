@@ -1,25 +1,25 @@
 // WebAssembly code will be inserted here:
 //beginwasm
-(module (global const i64 i32.const 3) (global const i64 i32.const 1));
-(module (global const i64 i64.const 3) (global const f64 i64.const 0));
-(module (global var i64 f64.const 1.0) (global var f32 i64.const 3));
-(module (func $add (param $var_d f32) (param $var_a i64) (result i32) get_local $var_d get_local $var_a f32.div) (export "add" (func $div)));
-(module (func $div (param $var_d i64) (param $var_b f64) (result f32) get_local $var_d get_local $var_a f32.add) (export "div" (func $mul)));
-(module (global var i64 i32.const 3) (global var f64 f64.const 1.0));
-(module (func $mul (param $var_c i64) (param $var_c f64) (result f64) get_local $var_d get_local $var_b f64.div) (export "mul" (func $mul)));
-(module (func $add (param $var_b i64) (param $var_a i64) (result f32) get_local $var_d get_local $var_c f64.mul) (export "div" (func $sub)));
-(module (func $add (param $var_c i32) (param $var_d f32) (result f64) get_local $var_a get_local $var_c i64.sub) (export "mul" (func $div)));
-(module (func $mul (param $var_b f32) (param $var_a i64) (result f64) get_local $var_c get_local $var_d i64.mul) (export "sub" (func $add)));
-(module (global var i64 i64.const 1) (global var f32 i32.const 1));
-(module (global var i64 f64.const 2.0) (global var f64 i64.const 4));
-(module (global var i64 f64.const 1.0) (global var f64 f64.const 3.0));
-(module (func $sub (param $var_d i64) (param $var_a i64) (result i64) get_local $var_a get_local $var_a f64.sub) (export "sub" (func $add)));
-(module (func $div (param $var_c f64) (param $var_d i64) (result f64) get_local $var_a get_local $var_a i32.mul) (export "div" (func $div)));
-(module (func $div (param $var_a f64) (param $var_d f32) (result i32) get_local $var_b get_local $var_d f32.add) (export "div" (func $add)));
-(module (global var i64 f64.const 1.0) (global var f32 f32.const 1.0));
-(module (global const i32 i64.const 1) (global const f64 f64.const 3.0));
-(module (global const i32 i32.const 1) (global const f32 i32.const 2));
-(module (func $mul (param $var_b f64) (param $var_c i64) (result i64) get_local $var_d get_local $var_a f32.sub) (export "add" (func $mul)));
+(module (table $table_1 (table externref 32)) (elem $table_4 (i32.const 1) $mul*));
+(module (table $table_4 (table funcref 255)) (elem $table_4 (i32.const 8) $div*));
+(module (table $table_2 (table externref 255)) (elem $table_3 (i32.const 8) $mul*));
+(module (global const i32 i32.const 2) (global const f64 i32.const 1));
+(module (table $table_1 (table externref 8)) (elem $table_4 (i32.const 1024) $sub*));
+(module (table $table_2 (table funcref 255)) (elem $table_4 (i32.const 8) $sub*));
+(module (table $table_2 (table eqref 1024)) (elem $table_4 (i32.const 1) $add*));
+(module (table $table_4 (table eqref 1024)) (elem $table_3 (i32.const 1024) $mul*));
+(module (global const f32 i64.const 4) (global var f64 f32.const 3.0));
+(module (global var i32 i32.const 0) (global const i32 i64.const 2));
+(module (global var i64 f64.const 2.0) (global var i32 i64.const 4));
+(module (global var i32 i32.const 4) (global const f32 i64.const 1));
+(module (global const i64 f32.const 2.0) (global var i64 i64.const 1));
+(module (global var f64 i64.const 4) (global const f64 i64.const 3));
+(module (func $sub (param $var_b f64) (param $var_a f32) (result i64) get_local $var_d get_local $var_a f64.sub) (export "div" (func $add)));
+(module (table $table_1 (table externref 1)) (elem $table_4 (i32.const 1) $sub*));
+(module (table $table_4 (table eqref 32)) (elem $table_1 (i32.const 8) $mul*));
+(module (global const i32 f32.const 3.0) (global const f64 i64.const 4));
+(module (func $div (param $var_d f32) (param $var_b i32) (result f64) get_local $var_c get_local $var_c i64.mul) (export "div" (func $div)));
+(module (global var f32 f32.const 2.0) (global var f64 i32.const 4));
 //endwasm
 
 
