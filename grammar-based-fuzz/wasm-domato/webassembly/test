@@ -1,25 +1,25 @@
 // WebAssembly code will be inserted here:
 //beginwasm
-(module (func $add (param $d f64) (param $c f64) (result f64) get_local $d get_local $d f32.sub) (export "mul" (func $mul)));
-(module (func $mul (param $a f64) (param $b f64) (result i64) get_local $a get_local $c f64.add) (export "add" (func $add)));
-(module (func $div (param $a f32) (param $b i64) (result f64) get_local $b get_local $d i64.div) (export "div" (func $mul)));
-(module (func $mul (param $d f32) (param $b i32) (result f32) get_local $d get_local $d f64.div) (export "mul" (func $sub)));
-(module (func $mul (param $c f32) (param $c f32) (result i32) get_local $b get_local $d f64.sub) (export "sub" (func $sub)));
-(module (func $add (param $c f32) (param $b f64) (result f64) get_local $b get_local $c i64.add) (export "mul" (func $add)));
-(module (func $add (param $b f32) (param $c i32) (result i64) get_local $b get_local $a f32.div) (export "div" (func $div)));
-(module (func $add (param $c f64) (param $b f64) (result f32) get_local $a get_local $d f32.div) (export "add" (func $add)));
-(module (func $add (param $b f32) (param $a f64) (result f32) get_local $a get_local $a i64.div) (export "mul" (func $div)));
-(module (func $add (param $b f32) (param $c f32) (result i32) get_local $a get_local $a f64.add) (export "mul" (func $add)));
-(module (func $add (param $c f64) (param $b f64) (result f64) get_local $b get_local $b f32.add) (export "add" (func $sub)));
-(module (func $mul (param $c f32) (param $d f64) (result f64) get_local $b get_local $a f32.add) (export "add" (func $sub)));
-(module (func $add (param $a i32) (param $c f64) (result f64) get_local $a get_local $c f32.sub) (export "mul" (func $sub)));
-(module (func $mul (param $a i32) (param $c f64) (result f32) get_local $a get_local $d i32.div) (export "mul" (func $div)));
-(module (func $div (param $c i32) (param $b i64) (result i64) get_local $d get_local $c i64.mul) (export "add" (func $add)));
-(module (func $div (param $b i32) (param $c i64) (result i64) get_local $a get_local $b f64.div) (export "mul" (func $mul)));
-(module (func $div (param $d i64) (param $d i32) (result i64) get_local $b get_local $a i32.sub) (export "add" (func $add)));
-(module (func $sub (param $c i64) (param $d f64) (result f32) get_local $c get_local $a i64.div) (export "sub" (func $add)));
-(module (func $add (param $c f32) (param $a f64) (result i64) get_local $b get_local $b i64.div) (export "mul" (func $mul)));
-(module (func $sub (param $a i64) (param $d i64) (result f32) get_local $b get_local $c f64.sub) (export "div" (func $add)));
+(module (global const i64 i32.const 3) (global const i64 i32.const 1));
+(module (global const i64 i64.const 3) (global const f64 i64.const 0));
+(module (global var i64 f64.const 1.0) (global var f32 i64.const 3));
+(module (func $add (param $var_d f32) (param $var_a i64) (result i32) get_local $var_d get_local $var_a f32.div) (export "add" (func $div)));
+(module (func $div (param $var_d i64) (param $var_b f64) (result f32) get_local $var_d get_local $var_a f32.add) (export "div" (func $mul)));
+(module (global var i64 i32.const 3) (global var f64 f64.const 1.0));
+(module (func $mul (param $var_c i64) (param $var_c f64) (result f64) get_local $var_d get_local $var_b f64.div) (export "mul" (func $mul)));
+(module (func $add (param $var_b i64) (param $var_a i64) (result f32) get_local $var_d get_local $var_c f64.mul) (export "div" (func $sub)));
+(module (func $add (param $var_c i32) (param $var_d f32) (result f64) get_local $var_a get_local $var_c i64.sub) (export "mul" (func $div)));
+(module (func $mul (param $var_b f32) (param $var_a i64) (result f64) get_local $var_c get_local $var_d i64.mul) (export "sub" (func $add)));
+(module (global var i64 i64.const 1) (global var f32 i32.const 1));
+(module (global var i64 f64.const 2.0) (global var f64 i64.const 4));
+(module (global var i64 f64.const 1.0) (global var f64 f64.const 3.0));
+(module (func $sub (param $var_d i64) (param $var_a i64) (result i64) get_local $var_a get_local $var_a f64.sub) (export "sub" (func $add)));
+(module (func $div (param $var_c f64) (param $var_d i64) (result f64) get_local $var_a get_local $var_a i32.mul) (export "div" (func $div)));
+(module (func $div (param $var_a f64) (param $var_d f32) (result i32) get_local $var_b get_local $var_d f32.add) (export "div" (func $add)));
+(module (global var i64 f64.const 1.0) (global var f32 f32.const 1.0));
+(module (global const i32 i64.const 1) (global const f64 f64.const 3.0));
+(module (global const i32 i32.const 1) (global const f32 i32.const 2));
+(module (func $mul (param $var_b f64) (param $var_c i64) (result i64) get_local $var_d get_local $var_a f32.sub) (export "add" (func $mul)));
 //endwasm
 
 

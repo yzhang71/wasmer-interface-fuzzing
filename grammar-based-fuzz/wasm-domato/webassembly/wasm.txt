@@ -25,6 +25,41 @@
 <funcs> = <func>
 <module> = (module <funcs> (export "<funcname>" (func $<funcname>)))
 
+<global_type> = i32 
+<global_type> = i64 
+<global_type> = f32
+<global_type> = f64
+<global_mutability> = const
+<global_mutability> = var
+<global_value> = i32.const <i32value>
+<global_value> = i64.const <i64value>
+<global_value> = f32.const <f32value>
+<global_value> = f64.const <f64value>
+<i32value> = 0
+<i32value> = 1
+<i32value> = 2
+<i32value> = 3
+<i32value> = 4
+<i64value> = 0
+<i64value> = 1
+<i64value> = 2
+<i64value> = 3
+<i64value> = 4
+<f32value> = 0.0
+<f32value> = 1.0
+<f32value> = 2.0
+<f32value> = 3.0
+<f32value> = 4.0
+<f64value> = 1.0
+<f64value> = 2.0
+<f64value> = 3.0
+<f64value> = 4.0
+<global> = (global <global_mutability> <global_type> <global_value>)
+<globals> = <global> <global>
+<globals> = <global> <global>
+<globals> = <global> <global>
+<module> = (module <globals>)
+
 !begin lines
 <module>;
 !end lines
