@@ -86,10 +86,7 @@
 <globals> = <global> <global>
 
 <elem_type> = funcref
-<elem_type> = externref
-<elem_type> = anyref
-<elem_type> = eqref
-<table_type> = (table <elem_type> <limits>)
+<table_type> = <limits> <elem_type>
 <limits> = <min> 
 <limits> = <max>
 <integer> = 1
@@ -104,7 +101,7 @@
 <table_id> = $table_2
 <table_id> = $table_3
 <table_id> = $table_4
-<elem> = (elem <table_id> (i32.const <offset>) <func_idx>)
+<elem> = (elem (i32.const <offset>) <func_idx>)
 <offset> = <integer>
 <func_idx> = $<funcname>
 <tables> = <table> 
@@ -113,7 +110,7 @@
 <elems> = <elem> <elem> <elem>
 <elems> = <elem> <elem> 
 <elems> = <elem>
-<module> = (module <tables> <elems>)
+<module> = (module <funcs> <tables> <elems>)
 
 <module> = (module <globals>)
 <module> = (module <funcs> (export "<funcname>" (func $<funcname>)))
