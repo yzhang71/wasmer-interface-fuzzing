@@ -115,6 +115,8 @@
 <elems> = <elem>
 <module> = (module <tables> <elems>)
 
+<module> = (module <globals>)
+<module> = (module <funcs> (export "<funcname>" (func $<funcname>)))
 <module> = (module <globals> <funcs> (export "<funcname>" (func $<funcname>)))
 
 !begin lines
