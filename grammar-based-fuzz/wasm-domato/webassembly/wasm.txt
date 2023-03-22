@@ -2,10 +2,7 @@
 <num_type_i64> = i64 
 <num_type_f32> = f32 
 <num_type_f64> = f64
-<funcname> = add
-<funcname> = div
-<funcname> = sub
-<funcname> = mul
+<funcname> = arithmetic
 <varname_a> = $var_a 
 <varname_b> = $var_b
 <varname_c> = $var_c 
@@ -47,7 +44,6 @@
 <func> = (func $<funcname> <params_f32> <result_f32> <instructions_f32>)
 <func> = (func $<funcname> <params_f64> <result_f64> <instructions_f64>)
 <funcs> = <func>
-<module> = (module <funcs> (export "<funcname>" (func $<funcname>)))
 
 <global_type_i32> = i32 
 <global_type_i64> = i64 
@@ -88,7 +84,6 @@
 <globals> = <global> <global>
 <globals> = <global> <global>
 <globals> = <global> <global>
-<module> = (module <globals>)
 
 <elem_type> = funcref
 <elem_type> = externref
@@ -119,6 +114,8 @@
 <elems> = <elem> <elem> 
 <elems> = <elem>
 <module> = (module <tables> <elems>)
+
+<module> = (module <globals> <funcs> (export "<funcname>" (func $<funcname>)))
 
 !begin lines
 <module>;

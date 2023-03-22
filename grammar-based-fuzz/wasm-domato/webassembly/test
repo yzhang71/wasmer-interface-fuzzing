@@ -1,25 +1,25 @@
 // WebAssembly code will be inserted here:
 //beginwasm
-(module (global (mut f32) f32.const 2.0) (global (mut f64) f64.const 4.0));
-(module (table $table_2 (table anyref 1)) (elem $table_2 (i32.const 255) $add));
-(module (func $div (param $var_g f64) (param $var_h f64) (result f64) get_local $var_g get_local $var_h f64.div) (export "sub" (func $sub)));
-(module (global (mut i64) i64.const 0) (global i64 i64.const 2));
-(module (global f32 f32.const 4.0) (global (mut f32) f32.const 4.0));
-(module (table $table_1 (table externref 255)) (elem $table_2 (i32.const 8) $div) (elem $table_3 (i32.const 32) $sub));
-(module (global (mut f32) f32.const 2.0) (global (mut i64) i64.const 0));
-(module (table $table_3 (table funcref 255)) (elem $table_3 (i32.const 8) $sub) (elem $table_1 (i32.const 255) $add) (elem $table_1 (i32.const 8) $div));
-(module (func $div (param $var_c i64) (param $var_d i64) (result i64) get_local $var_c get_local $var_d i64.mul) (export "div" (func $div)));
-(module (table $table_1 (table eqref 8)) (elem $table_1 (i32.const 1024) $div) (elem $table_1 (i32.const 255) $mul) (elem $table_4 (i32.const 8) $add));
-(module (global i32 i32.const 1) (global f32 f32.const 1.0));
-(module (func $div (param $var_e f32) (param $var_f f32) (result f32) get_local $var_e get_local $var_f f32.div) (export "sub" (func $mul)));
-(module (func $add (param $var_c i64) (param $var_d i64) (result i64) get_local $var_c get_local $var_d i64.add) (export "add" (func $mul)));
-(module (func $add (param $var_c i64) (param $var_d i64) (result i64) get_local $var_c get_local $var_d i64.div) (export "div" (func $add)));
-(module (table $table_3 (table eqref 8)) (elem $table_1 (i32.const 32) $sub) (elem $table_2 (i32.const 1) $mul) (elem $table_4 (i32.const 1024) $add));
-(module (table $table_3 (table externref 32)) (elem $table_2 (i32.const 255) $mul) (elem $table_4 (i32.const 8) $mul));
-(module (global (mut f64) f64.const 3.0) (global i32 i32.const 3));
-(module (func $mul (param $var_a i32) (param $var_b i32) (result i32) get_local $var_a get_local $var_b i32.mul) (export "div" (func $add)));
-(module (global i32 i32.const 4) (global (mut i32) i32.const 4));
-(module (global i64 i64.const 1) (global (mut i64) i64.const 0));
+(module (global i32 i32.const 2) (global (mut f32) f32.const 4.0) (func $arithmetic (param $var_e f32) (param $var_f f32) (result f32) get_local $var_e get_local $var_f f32.sub) (export "arithmetic" (func $arithmetic)));
+(module (global f64 f64.const 4.0) (global (mut i32) i32.const 4) (func $arithmetic (param $var_a i32) (param $var_b i32) (result i32) get_local $var_a get_local $var_b i32.sub) (export "arithmetic" (func $arithmetic)));
+(module (global i32 i32.const 3) (global (mut i64) i64.const 2) (func $arithmetic (param $var_a i32) (param $var_b i32) (result i32) get_local $var_a get_local $var_b i32.sub) (export "arithmetic" (func $arithmetic)));
+(module (global (mut f64) f64.const 4.0) (global f64 f64.const 3.0) (func $arithmetic (param $var_g f64) (param $var_h f64) (result f64) get_local $var_g get_local $var_h f64.mul) (export "arithmetic" (func $arithmetic)));
+(module (global (mut i32) i32.const 4) (global (mut i32) i32.const 2) (func $arithmetic (param $var_c i64) (param $var_d i64) (result i64) get_local $var_c get_local $var_d i64.div) (export "arithmetic" (func $arithmetic)));
+(module (global (mut i32) i32.const 0) (global f32 f32.const 1.0) (func $arithmetic (param $var_g f64) (param $var_h f64) (result f64) get_local $var_g get_local $var_h f64.add) (export "arithmetic" (func $arithmetic)));
+(module (table $table_2 (table anyref 32)) (elem $table_3 (i32.const 255) $arithmetic) (elem $table_4 (i32.const 32) $arithmetic) (elem $table_4 (i32.const 1024) $arithmetic) (elem $table_2 (i32.const 255) $arithmetic));
+(module (table $table_4 (table anyref 255)) (elem $table_1 (i32.const 1) $arithmetic));
+(module (global i64 i64.const 1) (global (mut f64) f64.const 3.0) (func $arithmetic (param $var_a i32) (param $var_b i32) (result i32) get_local $var_a get_local $var_b i32.div) (export "arithmetic" (func $arithmetic)));
+(module (global (mut f64) f64.const 2.0) (global (mut i64) i64.const 0) (func $arithmetic (param $var_c i64) (param $var_d i64) (result i64) get_local $var_c get_local $var_d i64.add) (export "arithmetic" (func $arithmetic)));
+(module (table $table_4 (table funcref 8)) (elem $table_4 (i32.const 255) $arithmetic) (elem $table_2 (i32.const 255) $arithmetic) (elem $table_4 (i32.const 32) $arithmetic));
+(module (table $table_1 (table externref 32)) (elem $table_3 (i32.const 1) $arithmetic) (elem $table_2 (i32.const 255) $arithmetic) (elem $table_2 (i32.const 8) $arithmetic) (elem $table_2 (i32.const 1) $arithmetic) (elem $table_3 (i32.const 255) $arithmetic));
+(module (table $table_3 (table anyref 1024)) (elem $table_2 (i32.const 1024) $arithmetic) (elem $table_1 (i32.const 1024) $arithmetic));
+(module (table $table_4 (table eqref 8)) (elem $table_3 (i32.const 1) $arithmetic) (elem $table_4 (i32.const 8) $arithmetic));
+(module (global (mut f32) f32.const 0.0) (global i32 i32.const 2) (func $arithmetic (param $var_g f64) (param $var_h f64) (result f64) get_local $var_g get_local $var_h f64.div) (export "arithmetic" (func $arithmetic)));
+(module (global f64 f64.const 2.0) (global (mut i32) i32.const 2) (func $arithmetic (param $var_a i32) (param $var_b i32) (result i32) get_local $var_a get_local $var_b i32.div) (export "arithmetic" (func $arithmetic)));
+(module (global (mut i32) i32.const 2) (global f64 f64.const 4.0) (func $arithmetic (param $var_e f32) (param $var_f f32) (result f32) get_local $var_e get_local $var_f f32.sub) (export "arithmetic" (func $arithmetic)));
+(module (global (mut f64) f64.const 1.0) (global i32 i32.const 0) (func $arithmetic (param $var_e f32) (param $var_f f32) (result f32) get_local $var_e get_local $var_f f32.div) (export "arithmetic" (func $arithmetic)));
+(module (global (mut f64) f64.const 3.0) (global (mut i32) i32.const 0) (func $arithmetic (param $var_e f32) (param $var_f f32) (result f32) get_local $var_e get_local $var_f f32.div) (export "arithmetic" (func $arithmetic)));
+(module (table $table_3 (table funcref 255)) (elem $table_2 (i32.const 1) $arithmetic) (elem $table_4 (i32.const 1) $arithmetic));
 //endwasm
 
 
