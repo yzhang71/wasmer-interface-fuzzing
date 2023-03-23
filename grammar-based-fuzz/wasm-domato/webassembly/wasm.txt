@@ -44,10 +44,28 @@
 <func> = (func $<funcname> <params_f32> <result_f32> <instructions_f32>)
 <func> = (func $<funcname> <params_f64> <result_f64> <instructions_f64>)
 
-<func> = (func $set_global (param $var_a i32) get_local $var_a set_global $global_a)
-<func> = (func $get_global (result i32) get_global $global_a)
+<set_func_i32> = (func $set_global (param $value i32) get_local $value set_global $globalname_a)
+<get_func_i32> = (func $get_global (result i32) get_global $globalname_a)
+<set_func_i64> = (func $set_global (param $value i64) get_local $value set_global $globalname_b)
+<get_func_i64> = (func $get_global (result i64) get_global $globalname_b)
+<set_func_f32> = (func $set_global (param $value f32) get_local $value set_global $globalname_c)
+<get_func_f32> = (func $get_global (result f32) get_global $globalname_c)
+<set_func_f64> = (func $set_global (param $value f64) get_local $value set_global $globalname_d)
+<get_func_f64> = (func $get_global (result f64) get_global $globalname_d)
+<set_func_i32> = (func $set_global (param $value i32) get_local $value set_global $globalname_e)
+<get_func_i32> = (func $get_global (result i32) get_global $globalname_e)
+<set_func_i64> = (func $set_global (param $value i64) get_local $value set_global $globalname_f)
+<get_func_i64> = (func $get_global (result i64) get_global $globalname_f)
+<set_func_f32> = (func $set_global (param $value f32) get_local $value set_global $globalname_g)
+<get_func_f32> = (func $get_global (result f32) get_global $globalname_g)
+<set_func_f64> = (func $set_global (param $value f64) get_local $value set_global $globalname_h)
+<get_func_f64> = (func $get_global (result f64) get_global $globalname_h)
 
 <funcs> = <func>
+<funcs> = <set_func_i32> <get_func_i32> <func>
+<funcs> = <set_func_i64> <get_func_i64> <func>
+<funcs> = <set_func_f32> <get_func_f32> <func>
+<funcs> = <set_func_f64> <get_func_f64> <func>
 
 <globalname_a> = $globalname_a 
 <globalname_b> = $globalname_b
@@ -85,17 +103,15 @@
 <f64value> = 2.0
 <f64value> = 3.0
 <f64value> = 4.0
-<global> = (global <globalname_a> <global_type_i32> <global_value_i32>)
-<global> = (global <globalname_b> <global_type_i64> <global_value_i64>)
-<global> = (global <globalname_c> <global_type_f32> <global_value_f32>)
-<global> = (global <globalname_d> <global_type_f64> <global_value_f64>)
-<global> = (global <globalname_e> (<global_mutability> <global_type_i32>) <global_value_i32>)
-<global> = (global <globalname_f> (<global_mutability> <global_type_i64>) <global_value_i64>)
-<global> = (global <globalname_g> (<global_mutability> <global_type_f32>) <global_value_f32>)
-<global> = (global <globalname_h> (<global_mutability> <global_type_f64>) <global_value_f64>)
-<globals> = <global> <global>
-<globals> = <global> <global>
-<globals> = <global> <global>
+<i32global> = (global <globalname_a> <global_type_i32> <global_value_i32>)
+<i64global> = (global <globalname_b> <global_type_i64> <global_value_i64>)
+<f32global> = (global <globalname_c> <global_type_f32> <global_value_f32>)
+<f64global> = (global <globalname_d> <global_type_f64> <global_value_f64>)
+<i32global> = (global <globalname_e> (<global_mutability> <global_type_i32>) <global_value_i32>)
+<i64global> = (global <globalname_f> (<global_mutability> <global_type_i64>) <global_value_i64>)
+<f32global> = (global <globalname_g> (<global_mutability> <global_type_f32>) <global_value_f32>)
+<f64global> = (global <globalname_h> (<global_mutability> <global_type_f64>) <global_value_f64>)
+<globals> = <i32global> <i64global> <f32global> <f64global>
 
 <elem_type> = funcref
 <table_type> = <limits> <elem_type>
@@ -122,10 +138,9 @@
 <elems> = <elem> <elem> <elem>
 <elems> = <elem> <elem> 
 <elems> = <elem>
-<module> = (module <funcs> <tables> <elems>)
+<module> = (module <globals> <funcs> <tables> <elems>)
 
 <module> = (module <globals>)
-<module> = (module <funcs> (export "<funcname>" (func $<funcname>)))
 <module> = (module <globals> <funcs> (export "<funcname>" (func $<funcname>)))
 
 !begin lines
