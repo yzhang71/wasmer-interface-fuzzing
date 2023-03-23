@@ -43,8 +43,20 @@
 <func> = (func $<funcname> <params_i64> <result_i64> <instructions_i64>)
 <func> = (func $<funcname> <params_f32> <result_f32> <instructions_f32>)
 <func> = (func $<funcname> <params_f64> <result_f64> <instructions_f64>)
+
+<func> = (func $set_global (param $var_a i32) get_local $var_a set_global $global_a)
+<func> = (func $get_global (result i32) get_global $global_a)
+
 <funcs> = <func>
 
+<globalname_a> = $globalname_a 
+<globalname_b> = $globalname_b
+<globalname_c> = $globalname_c
+<globalname_d> = $globalname_d
+<globalname_e> = $globalname_e 
+<globalname_f> = $globalname_f
+<globalname_g> = $globalname_g
+<globalname_h> = $globalname_h
 <global_type_i32> = i32 
 <global_type_i64> = i64 
 <global_type_f32> = f32
@@ -73,14 +85,14 @@
 <f64value> = 2.0
 <f64value> = 3.0
 <f64value> = 4.0
-<global> = (global <global_type_i32> <global_value_i32>)
-<global> = (global <global_type_i64> <global_value_i64>)
-<global> = (global <global_type_f32> <global_value_f32>)
-<global> = (global <global_type_f64> <global_value_f64>)
-<global> = (global (<global_mutability> <global_type_i32>) <global_value_i32>)
-<global> = (global (<global_mutability> <global_type_i64>) <global_value_i64>)
-<global> = (global (<global_mutability> <global_type_f32>) <global_value_f32>)
-<global> = (global (<global_mutability> <global_type_f64>) <global_value_f64>)
+<global> = (global <globalname_a> <global_type_i32> <global_value_i32>)
+<global> = (global <globalname_b> <global_type_i64> <global_value_i64>)
+<global> = (global <globalname_c> <global_type_f32> <global_value_f32>)
+<global> = (global <globalname_d> <global_type_f64> <global_value_f64>)
+<global> = (global <globalname_e> (<global_mutability> <global_type_i32>) <global_value_i32>)
+<global> = (global <globalname_f> (<global_mutability> <global_type_i64>) <global_value_i64>)
+<global> = (global <globalname_g> (<global_mutability> <global_type_f32>) <global_value_f32>)
+<global> = (global <globalname_h> (<global_mutability> <global_type_f64>) <global_value_f64>)
 <globals> = <global> <global>
 <globals> = <global> <global>
 <globals> = <global> <global>
