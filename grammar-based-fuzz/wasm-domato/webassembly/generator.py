@@ -7,7 +7,7 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(parent_dir)
 from grammar import Grammar
 
-_N_MAIN_LINES = 100
+_N_MAIN_LINES = 50
 
 def generate_wasm_code(wasmgrammar, num_lines):
     wasm = ''
