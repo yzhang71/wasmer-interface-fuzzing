@@ -141,10 +141,9 @@
 
 <typy_name> = $func_i64_i64
 <type> = (type <typy_name> (func (param <num_type_i64>) (result <num_type_i64>)))
-<params_i64> = (param $x <num_type_i64>)
-<result_i64> = (result <num_type_i64>)
-<instruction_i64> = (<num_type_i64>.mul (get_local $x) (get_local $x))
-<type_func> = <type> (func $double_i64 (type <typy_name>) <params_i64> <result_i64> <instruction_i64>)
+<type_params_i64> = (param $x <num_type_i64>)
+<type_instruction_i64> = (<num_type_i64>.mul (local.get $x) (i64.const <integer>))
+<type_func> = <type> (func $double_i64 (type <typy_name>) <type_params_i64> <result_i64> <type_instruction_i64>)
 
 <module> = (module <globals> <funcs> <tables> <elems>)
 <module> = (module <globals>)
