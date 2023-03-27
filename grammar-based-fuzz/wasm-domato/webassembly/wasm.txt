@@ -95,7 +95,7 @@
 <i64value> = 3
 <i64value> = 4
 <f32value> = 0.0
-<f32value> = 2147483648.0
+<f32value> = 2147483647.0
 <f32value> = 2.0
 <f32value> = 3.0
 <f32value> = 4.0
@@ -103,10 +103,10 @@
 <f64value> = 9223372036854775807.0
 <f64value> = 3.0
 <f64value> = 4.0
-<i32global> = (global <globalname_a> <global_type_i32> <global_value_i32>)
-<i64global> = (global <globalname_b> <global_type_i64> <global_value_i64>)
-<f32global> = (global <globalname_c> <global_type_f32> <global_value_f32>)
-<f64global> = (global <globalname_d> <global_type_f64> <global_value_f64>)
+<i32global> = (global <globalname_a> (<global_mutability> <global_type_i32>) <global_value_i32>)
+<i64global> = (global <globalname_b> (<global_mutability> <global_type_i64>) <global_value_i64>)
+<f32global> = (global <globalname_c> (<global_mutability> <global_type_f32>) <global_value_f32>)
+<f64global> = (global <globalname_d> (<global_mutability> <global_type_f64>) <global_value_f64>)
 <i32global_mut> = (global <globalname_e> (<global_mutability> <global_type_i32>) <global_value_i32>)
 <i64global_mut> = (global <globalname_f> (<global_mutability> <global_type_i64>) <global_value_i64>)
 <f32global_mut> = (global <globalname_g> (<global_mutability> <global_type_f32>) <global_value_f32>)
@@ -118,7 +118,7 @@
 <limits> = <min> 
 <limits> = <max>
 <integer> = 1562321
-<integer> = 2147483646
+<integer> = 2156871
 <integer> = 6456
 <integer> = 0
 <min> = <integer>
@@ -191,7 +191,9 @@
 <export_store> = (export "store_value" (func $store_value))
 <export_load> = (export "load_value" (func $load_value))
 
-<module> = (module <globals> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
+<data> = (data (i32.const 0) "Hello, WebAssembly!")
+
+<module> = (module <data> <globals> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
 <module> = (module <globals> <funcs> <tables> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
 <module> = (module <memory> <store_load_func_f32> <export_store> <export_load>)
 <module> = (module <globals> <funcs> <tables> <elems>)
