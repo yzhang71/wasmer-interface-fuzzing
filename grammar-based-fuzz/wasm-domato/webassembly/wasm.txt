@@ -155,9 +155,18 @@
 <size_of_page> = 512
 <size_of_page> = 1024
 <memory> = (memory (export "memory") <size_of_page>)
-<store_func_i32> = (func $set_global (param $value i32) get_local $value set_global $globalname_a)
+<address> = $address
+<value> = $value
+<param_addr_i32> = (param <address> i32)
+<param_value_i32> = (param <value> i32)
+<store_body_i32> = (i32.store (get_local <address>) (get_local <value>))
+<store_func_i32> = (func $store_value <param_addr_i32> <param_value_i32> <store_body_i32>)
+<load_body_i32> = (i32.load (get_local <address>))
+<load_func_i32> = (func $load_value <param_addr_i32> <result_i32> <load_body_i32>)
+<export_store> = (export "store_value" (func $store_value))
+<export_load> = (export "load_value" (func $load_value))
 
-<module> = (module <memory> <store_func> <load_func>)
+<module> = (module <memory> <store_func_i32> <load_func_i32> <export_store> <export_load>)
 <module> = (module <globals> <funcs> <tables> <elems>)
 <module> = (module <globals>)
 <module> = (module <type_func>)
