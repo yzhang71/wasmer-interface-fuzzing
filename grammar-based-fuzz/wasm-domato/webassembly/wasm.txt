@@ -166,7 +166,7 @@
 <export_store> = (export "store_value" (func $store_value))
 <export_load> = (export "load_value" (func $load_value))
 
-<module> = (module <memory> <store_func_i32> <load_func_i32> <export_store> <export_load>)
+<module> = (module <globals> <funcs> <tables> <elems> <memory> <store_func_i32> <load_func_i32> <export_store> <export_load>)
 <module> = (module <globals> <funcs> <tables> <elems>)
 <module> = (module <globals>)
 <module> = (module <type_func>)
