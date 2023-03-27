@@ -107,20 +107,19 @@
 <i64global> = (global <globalname_b> <global_type_i64> <global_value_i64>)
 <f32global> = (global <globalname_c> <global_type_f32> <global_value_f32>)
 <f64global> = (global <globalname_d> <global_type_f64> <global_value_f64>)
-<i32global> = (global <globalname_e> (<global_mutability> <global_type_i32>) <global_value_i32>)
-<i64global> = (global <globalname_f> (<global_mutability> <global_type_i64>) <global_value_i64>)
-<f32global> = (global <globalname_g> (<global_mutability> <global_type_f32>) <global_value_f32>)
-<f64global> = (global <globalname_h> (<global_mutability> <global_type_f64>) <global_value_f64>)
-<globals> = <i32global> <i64global> <f32global> <f64global>
+<i32global_mut> = (global <globalname_e> (<global_mutability> <global_type_i32>) <global_value_i32>)
+<i64global_mut> = (global <globalname_f> (<global_mutability> <global_type_i64>) <global_value_i64>)
+<f32global_mut> = (global <globalname_g> (<global_mutability> <global_type_f32>) <global_value_f32>)
+<f64global_mut> = (global <globalname_h> (<global_mutability> <global_type_f64>) <global_value_f64>)
+<globals> = <i32global> <i64global> <f32global> <f64global> <i32global_mut> <i64global_mut> <f32global_mut> <f64global_mut>
 
 <elem_type> = funcref
 <table_type> = <limits> <elem_type>
 <limits> = <min> 
 <limits> = <max>
-<integer> = -2147483648
-<integer> = 2147483647
-<integer> = -9223372036854775808
-<integer> = 9223372036854775807
+<integer> = 1562321
+<integer> = 2147483646
+<integer> = 6456
 <integer> = 0
 <min> = <integer>
 <max> = <integer>
@@ -163,13 +162,42 @@
 <store_func_i32> = (func $store_value <param_addr_i32> <param_value_i32> <store_body_i32>)
 <load_body_i32> = (i32.load (get_local <address>))
 <load_func_i32> = (func $load_value <param_addr_i32> <result_i32> <load_body_i32>)
+<store_load_func_i32> = <store_func_i32> <load_func_i32>
+
+<param_addr_f32> = (param <address> i32)
+<param_value_f32> = (param <value> f32)
+<store_body_f32> = (f32.store (get_local <address>) (get_local <value>))
+<store_func_f32> = (func $store_value <param_addr_f32> <param_value_f32> <store_body_f32>)
+<load_body_f32> = (f32.load (get_local <address>))
+<load_func_f32> = (func $load_value <param_addr_f32> <result_f32> <load_body_f32>)
+<store_load_func_f32> = <store_func_f32> <load_func_f32>
+
+<param_addr_f64> = (param <address> i32)
+<param_value_f64> = (param <value> f64)
+<store_body_f64> = (f64.store (get_local <address>) (get_local <value>))
+<store_func_f64> = (func $store_value <param_addr_f64> <param_value_f64> <store_body_f64>)
+<load_body_f64> = (f64.load (get_local <address>))
+<load_func_f64> = (func $load_value <param_addr_f64> <result_f64> <load_body_f64>)
+<store_load_func_f64> = <store_func_f64> <load_func_f64>
+
+<param_addr_i64> = (param <address> i32)
+<param_value_i64> = (param <value> i64)
+<store_body_i64> = (i64.store (get_local <address>) (get_local <value>))
+<store_func_i64> = (func $store_value <param_addr_i64> <param_value_i64> <store_body_i64>)
+<load_body_i64> = (i64.load (get_local <address>))
+<load_func_i64> = (func $load_value <param_addr_i64> <result_i64> <load_body_i64>)
+<store_load_func_i64> = <store_func_i64> <load_func_i64>
+
 <export_store> = (export "store_value" (func $store_value))
 <export_load> = (export "load_value" (func $load_value))
 
-<module> = (module <globals> <funcs> <tables> <elems> <memory> <store_func_i32> <load_func_i32> <export_store> <export_load>)
+<module> = (module <globals> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
+<module> = (module <globals> <funcs> <tables> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
+<module> = (module <memory> <store_load_func_f32> <export_store> <export_load>)
 <module> = (module <globals> <funcs> <tables> <elems>)
 <module> = (module <globals>)
 <module> = (module <type_func>)
+<module> = (module <type_func> <memory> <store_load_func_f64> <export_store> <export_load>)
 <module> = (module <globals> <funcs> (export "<funcname>" (func $<funcname>)))
 
 !begin lines
