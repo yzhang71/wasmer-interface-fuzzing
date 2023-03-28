@@ -206,15 +206,15 @@
 <data> = (data (i32.const 4) "\00\00\80\3F") 
 <data> = (data (i32.const 8) "Hello, World!") 
 
-<module> = (module <data> <data> <globals> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
-<module> = (module <globals> <funcs> <tables> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
-<module> = (module <memory> <data> <data> <store_load_func_f32> <export_store> <export_load>)
-<module> = (module <globals> <funcs> <tables> <elems>)
+<module> = (module <data> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
+<module> = (module <globals> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
+<module> = (module <memory> <funcs_even> <export_is_even> <data> <data> <store_load_func_f32> <export_store> <export_load>)
+<module> = (module <globals> <funcs> <funcs_even> <export_is_even> <tables> <elems>)
 <module> = (module <globals>)
 <module> = (module <funcs_even> <export_is_even>)
 <module> = (module <type_func>)
-<module> = (module <type_func> <memory> <data> <data> <store_load_func_f64> <export_store> <export_load>)
-<module> = (module <globals> <funcs> (export "<funcname>" (func $<funcname>)))
+<module> = (module <type_func> <memory> <funcs_even> <export_is_even> <data> <data> <store_load_func_f64> <export_store> <export_load>)
+<module> = (module <globals> <funcs_even> <export_is_even> <funcs> (export "<funcname>" (func $<funcname>)))
 
 !begin lines
 <module>;
