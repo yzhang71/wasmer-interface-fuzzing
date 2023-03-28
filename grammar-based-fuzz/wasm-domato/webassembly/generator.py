@@ -2,18 +2,19 @@ from __future__ import print_function
 import os
 import random
 import sys
+import hashlib
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(parent_dir)
 from grammar import Grammar
 
-_N_MAIN_LINES = 100
+_N_MAIN_LINES = 10
 
 def generate_wasm_code(wasmgrammar, num_lines):
     wasm = ''
-    wasm += '//beginwasm\n'
+    # wasm += '//beginwasm\n'
     wasm += wasmgrammar._generate_code(num_lines)
-    wasm += '\n//endwasm\n'
+    # wasm += '\n//endwasm\n'
     return wasm
 
 def GenerateNewSample(template, wasmgrammar):
@@ -29,10 +30,32 @@ def GenerateNewSample(template, wasmgrammar):
 
     return result
 
+# def generate_samples(grammar_dir, outfiles):
+#     f = open(os.path.join(grammar_dir, 'template.wat'))
+#     template = f.read()
+#     f.close()
+
+#     wasmgrammar = Grammar()
+#     err = wasmgrammar.parse_from_file(os.path.join(grammar_dir, 'wasm.txt'))
+#     if err > 0:
+#         print('There were errors parsing grammar')
+#         return
+
+#     for outfile in outfiles:
+#         result = GenerateNewSample(template, wasmgrammar)
+
+#         if result is not None:
+#             print('Writing a sample to ' + outfile)
+#             try:
+#                 f = open(outfile, 'w')
+#                 f.write(result)
+#                 f.close()
+#             except IOError:
+#                 print('Error writing to output')
+
 def generate_samples(grammar_dir, outfiles):
-    f = open(os.path.join(grammar_dir, 'template.wat'))
-    template = f.read()
-    f.close()
+    with open(os.path.join(grammar_dir, 'template.wat'), 'r') as f:
+        template = f.read()
 
     wasmgrammar = Grammar()
     err = wasmgrammar.parse_from_file(os.path.join(grammar_dir, 'wasm.txt'))
@@ -40,17 +63,36 @@ def generate_samples(grammar_dir, outfiles):
         print('There were errors parsing grammar')
         return
 
+    # Create the "testcases" directory if it doesn't exist
+    testcases_dir = os.path.join(os.path.dirname(outfiles[0]), 'testcase')
+    if not os.path.exists(testcases_dir):
+        os.makedirs(testcases_dir)
+
     for outfile in outfiles:
         result = GenerateNewSample(template, wasmgrammar)
 
         if result is not None:
-            print('Writing a sample to ' + outfile)
-            try:
-                f = open(outfile, 'w')
-                f.write(result)
-                f.close()
-            except IOError:
-                print('Error writing to output')
+            # Split the result into lines
+            lines = result.split('\n')
+
+            # Write each line to a separate file
+            for line in lines:
+                if not line.strip():  # Skip empty lines
+                    continue
+
+                # Remove the last character ';' of the line
+                line = line[:-1]
+
+                # Compute the md5 hash of the line
+                md5_hash = hashlib.md5(line.encode()).hexdigest()
+
+                # Create a new output file path using the md5 hash as the filename
+                outfile = os.path.join(testcases_dir, md5_hash)
+                try:
+                    with open(outfile, 'w') as f:
+                        f.write(line)
+                except IOError:
+                    print('Error writing to output')
 
 def get_option(option_name):
     for i in range(len(sys.argv)):
