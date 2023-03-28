@@ -44,6 +44,12 @@
 <func> = (func $<funcname> <params_f32> <result_f32> <instructions_f32>)
 <func> = (func $<funcname> <params_f64> <result_f64> <instructions_f64>)
 
+<rem_i32> = (local $rem_i32 <num_type_i32>)
+<func_body_even> = <rem_i32> <set_rem_i32> <get_rem_i32>
+<params_i32_even> = (param <varname_a> <num_type_i32>)
+<funcname_even> = is_even
+<func> = (func $<funcname_even> <params_i32_even> <result_i32> <func_body_even>)
+
 <set_func_i32> = (func $set_global (param $value i32) get_local $value set_global $globalname_a)
 <get_func_i32> = (func $get_global (result i32) get_global $globalname_a)
 <set_func_i64> = (func $set_global (param $value i64) get_local $value set_global $globalname_b)
