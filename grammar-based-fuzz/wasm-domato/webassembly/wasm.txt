@@ -141,9 +141,17 @@
 <elem> = (elem (i32.const <offset>) <func_idx>)
 <offset> = <integer>
 <func_idx> = $<funcname>
-<tables> = <table> 
-<tables> = <table> 
-<elems> = <elem> <elems> 
+<tables> = <table>
+<table_func> = (func $func_a)
+<table_func> = (func $func_b)
+<table_func> = (func $func_c)
+<table_func> = (func $func_d)
+<table_func> = (func $func_e)
+<table_func> = (func $func_f)
+<table_func> = (func $func_g)
+<table_func> = (func $func_h)
+<table_operation> = (func $table_operations (drop (table.size <table_id>)))
+<tables> = <table_func> <table_func> <table> <table_operation>
 <elems> = <elem> <elem> <elem>
 <elems> = <elem> <elem> 
 <elems> = <elem>
@@ -227,7 +235,6 @@
 <module> = (module <type_func>)
 <module> = (module <type_func> <memory> <funcs_even> <export_is_even> <data> <data> <store_load_func_f64> <export_store> <export_load>)
 <module> = (module <globals> <funcs_even> <export_is_even> <funcs> (export "<funcname>" (func $<funcname>)))
-<module> = <memory>
 
 !begin lines
 <module>;
