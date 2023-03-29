@@ -163,7 +163,19 @@
 <size_of_page> = 256
 <size_of_page> = 512
 <size_of_page> = 1024
-<memory> = (memory (export "memory") <size_of_page>)
+<mem_name> = $mem
+<mem_func_name> = $mem_func
+<memory_create> = (memory <mem_name> <size_of_page>)
+<memory> = <memory_create> <data> <mem_func>
+<mem_size> = (local $mem_size <num_type_i32>)
+<mem_grow> = (local $mem_grow <num_type_i32>)
+<set_size> = (local.set $mem_size (memory.size))
+<set_grow> = (local.set $mem_grow (memory.grow (<num_type_i32>.const 1)))
+<memory_fill> = (memory.fill (<num_type_i32>.const 1024) (<num_type_i32>.const 42) (<num_type_i32>.const 100))
+<memory_copy> = (memory.copy (<num_type_i32>.const 1124) (<num_type_i32>.const 1024) (<num_type_i32>.const 100))
+<memory_init> = (memory.init 0 (<num_type_i32>.const 1224) (<num_type_i32>.const 0) (<num_type_i32>.const 13))
+<mem_func> = (func <mem_func_name> <mem_size> <mem_grow> <set_size> <set_grow> <memory_fill> <memory_copy> <memory_init>)
+
 <address> = $address
 <value> = $value
 <param_addr_i32> = (param <address> i32)
@@ -215,6 +227,7 @@
 <module> = (module <type_func>)
 <module> = (module <type_func> <memory> <funcs_even> <export_is_even> <data> <data> <store_load_func_f64> <export_store> <export_load>)
 <module> = (module <globals> <funcs_even> <export_is_even> <funcs> (export "<funcname>" (func $<funcname>)))
+<module> = <memory>
 
 !begin lines
 <module>;
