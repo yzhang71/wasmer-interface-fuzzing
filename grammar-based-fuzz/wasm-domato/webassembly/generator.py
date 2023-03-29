@@ -8,7 +8,7 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(parent_dir)
 from grammar import Grammar
 
-_N_MAIN_LINES = 10
+_N_MAIN_LINES = 100
 
 def generate_wasm_code(wasmgrammar, num_lines):
     wasm = ''
@@ -64,7 +64,7 @@ def generate_samples(grammar_dir, outfiles):
         return
 
     # Create the "testcases" directory if it doesn't exist
-    testcases_dir = os.path.join(os.path.dirname(outfiles[0]), 'testcase')
+    testcases_dir = os.path.join(os.path.dirname(outfiles[0]), 'input_testcase')
     if not os.path.exists(testcases_dir):
         os.makedirs(testcases_dir)
 
