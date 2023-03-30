@@ -17,17 +17,19 @@ use wasmer_engine_universal::Universal;
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Let's declare the Wasm module with the text representation.
     let wasm_bytes = wat2wasm(
-        r#"
-(module
-  (type $sum_t (func (param i32 i32) (result i32)))
-  (func $sum_f (type $sum_t) (param $x i32) (param $y i32) (result i32)
-    local.get $x
-    local.get $y
-    i32.add)
-  (export "sum" (func $sum_f)))
-"#
-        .as_bytes(),
-    )?;
+      r#"
+      (component
+        (type 
+          (union 234 32 u64 234 32 u64 u64 6 4 34 3 364  6 4 32 4  32 
+            (union 234 32 u64 234 32 u64 u64 6 4 34 3 364  6 4 32 4  32 4 8 4 3 364 32 u64 6 4 32 8  32 8 4 3 364 1 3644 8 4 3 364364  6 4 32 4  32 
+              (union 234 32 u64 234 32 u64 u64 6 4 34 3 364  6 4 32 4  32 4 8 4 3 364 32 u64 6 4 32 8  32 8 4 3 364 1 3644 8 4 3 364 32 u64 6 4 32 8  32 8 4 3 364
+              )1  32 u64 6 4 32 8  32 8 4 3 364)1 364 32 3
+            )
+          )
+        )
+      "#
+    .as_bytes(),
+  )?;
 
     // Use Cranelift compiler with the default settings
     let compiler = Cranelift::default();
