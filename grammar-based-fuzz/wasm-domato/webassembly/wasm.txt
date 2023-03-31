@@ -223,6 +223,8 @@
 <data> = (data (i32.const 4) "\00\00\80\3F") 
 <data> = (data (i32.const 8) "Hello, World!") 
 
+<ref_func> = 
+
 <module> = (module <data> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
 <module> = (module <globals> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
 <module> = (module <memory> <funcs_even> <tables> <export_is_even> <data> <data> <store_load_func_f32> <export_store> <export_load>)
