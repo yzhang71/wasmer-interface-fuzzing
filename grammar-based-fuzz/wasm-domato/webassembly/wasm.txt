@@ -235,8 +235,8 @@
 <local_i32> = (local i32)
 <local_set_get> = (local.set 0 (local.get 0))
 <local_tee> = (local.tee 0 (i32.add (local.get 0) (i32.const 1)))
-<local_opers> = (func $local_tee (param i32) <result_i32> <local_i32> <local_set_get>)
-<local_opers> = (func $local_tee (param i32) <result_i32> <local_i32> <local_set_get>) (export "local_tee" (func $local_tee))
+<local_opers> = (func $local_tee (param i32) <result_i32> <local_i32> <local_set_get> <local_tee>)
+<local_opers> = (func $local_tee (param i32) <result_i32> <local_i32> <local_set_get> <local_tee>) (export "local_tee" (func $local_tee))
 
 <module> = (module <local_opers> <ref_func> <data> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
 <module> = (module <local_opers> <ref_func> <globals> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
