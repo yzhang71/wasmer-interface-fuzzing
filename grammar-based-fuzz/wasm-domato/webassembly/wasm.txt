@@ -224,7 +224,13 @@
 <data> = (data (<num_type_i32>.const 8) "Hello, World!") 
 
 <func_ref_a> = (func $func_ref_a <result_i32> (<num_type_i32>.const 42))
-<ref_func> = <func_ref_a> <func_ref_b>
+<func_ref_b> = (func $func_ref_b)
+<ref_null> = (ref.null func)
+<ref_is_null> = (ref.is_null)
+<if_null> = if <result_i32> (then (call $func_ref_a))
+<else_null> = (else (i32.const 0))
+<ref_oper> = (func $ref_operations <result_i32> <ref_null> <ref_is_null> (<if_null> <else_null>))
+<ref_func> = <func_ref_a> <func_ref_b> <ref_oper>
 
 <module> = (module <data> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
 <module> = (module <globals> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
