@@ -242,9 +242,9 @@
 <module> = (module <local_opers> <ref_func> <globals> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
 <module> = (module <local_opers> <ref_func> <memory> <funcs_even> <tables> <export_is_even> <data> <data> <store_load_func_f32> <export_store> <export_load>)
 <module> = (module <local_opers> <ref_func> <globals> <funcs> <funcs_even> <export_is_even> <tables> <elems>)
-<module> = (module <local_opers> <ref_func> <globals>)
+<module> = (module <local_opers> <ref_func> <globals> <data> <data>)
 <module> = (module <local_opers> <ref_func> <funcs_even> <export_is_even>)
-<module> = (module <local_opers> <ref_func> <type_func>)
+<module> = (module <local_opers> <ref_func> <type_func> <data> <data>)
 <module> = (module <local_opers> <ref_func> <type_func> <memory> <tables> <funcs_even> <export_is_even> <data> <data> <store_load_func_f64> <export_store> <export_load>)
 <module> = (module <local_opers> <ref_func> <globals> <funcs_even> <tables> <export_is_even> <funcs> (export "<funcname>" (func $<funcname>)))
 
