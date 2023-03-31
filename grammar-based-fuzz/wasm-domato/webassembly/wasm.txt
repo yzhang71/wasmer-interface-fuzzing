@@ -232,15 +232,21 @@
 <ref_oper> = (func $ref_operations <result_i32> <ref_null> <ref_is_null> (<if_null> <else_null>))
 <ref_func> = <func_ref_a> <func_ref_b> <ref_oper>
 
-<module> = (module <ref_func> <data> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
-<module> = (module <ref_func> <globals> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
-<module> = (module <ref_func> <memory> <funcs_even> <tables> <export_is_even> <data> <data> <store_load_func_f32> <export_store> <export_load>)
-<module> = (module <ref_func> <globals> <funcs> <funcs_even> <export_is_even> <tables> <elems>)
-<module> = (module <ref_func> <globals>)
-<module> = (module <ref_func> <funcs_even> <export_is_even>)
-<module> = (module <ref_func> <type_func>)
-<module> = (module <ref_func> <type_func> <memory> <tables> <funcs_even> <export_is_even> <data> <data> <store_load_func_f64> <export_store> <export_load>)
-<module> = (module <ref_func> <globals> <funcs_even> <tables> <export_is_even> <funcs> (export "<funcname>" (func $<funcname>)))
+<local_i32> = (local i32)
+<local_set_get> = (local.set 0 (local.get 0))
+<local_tee> = (local.tee 0 (i32.add (local.get 0) (i32.const 1)))
+<local_opers> = (func $local_tee (param i32) <result_i32> <local_i32> <local_set_get>)
+<local_opers> = (func $local_tee (param i32) <result_i32> <local_i32> <local_set_get>) (export "local_tee" (func $local_tee))
+
+<module> = (module <local_opers> <ref_func> <data> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
+<module> = (module <local_opers> <ref_func> <globals> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
+<module> = (module <local_opers> <ref_func> <memory> <funcs_even> <tables> <export_is_even> <data> <data> <store_load_func_f32> <export_store> <export_load>)
+<module> = (module <local_opers> <ref_func> <globals> <funcs> <funcs_even> <export_is_even> <tables> <elems>)
+<module> = (module <local_opers> <ref_func> <globals>)
+<module> = (module <local_opers> <ref_func> <funcs_even> <export_is_even>)
+<module> = (module <local_opers> <ref_func> <type_func>)
+<module> = (module <local_opers> <ref_func> <type_func> <memory> <tables> <funcs_even> <export_is_even> <data> <data> <store_load_func_f64> <export_store> <export_load>)
+<module> = (module <local_opers> <ref_func> <globals> <funcs_even> <tables> <export_is_even> <funcs> (export "<funcname>" (func $<funcname>)))
 
 !begin lines
 <module>;
