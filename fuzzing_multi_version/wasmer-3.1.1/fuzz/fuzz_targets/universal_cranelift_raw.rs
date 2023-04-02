@@ -6,34 +6,38 @@ use wasmer_compiler_cranelift::Cranelift;
 
 fuzz_target!(|data: &[u8]| {
 
+    let wasm_bytes;
+
     match wat2wasm(data) {
-        Ok(_) => {}
+        Ok(ret) => {wasm_bytes = ret}
         Err(_) => {
             return;
         }
     }
 
-    let wasm_bytes = wat2wasm(data).unwrap();
+    // let wasm_bytes = wat2wasm(data).unwrap();
 
-    if let Ok(path) = std::env::var("DUMP_TESTCASE") {
-        use std::fs::File;
-        use std::io::Write;
-        let mut file = File::create(path).unwrap();
-        file.write_all(&wasm_bytes).unwrap();
-        return;
-    }
+    // if let Ok(path) = std::env::var("DUMP_TESTCASE") {
+    //     use std::fs::File;
+    //     use std::io::Write;
+    //     let mut file = File::create(path).unwrap();
+    //     file.write_all(&wasm_bytes).unwrap();
+    //     return;
+    // }
 
     let compiler = Cranelift::default();
     let mut store = Store::new(compiler);
 
+    let module;
+
     match Module::new(&store, &wasm_bytes) {
-        Ok(_) => {}
+        Ok(ret) => {module = ret}
         Err(_) => {
             return;
         }
     }
 
-    let module = Module::new(&store, &wasm_bytes).unwrap();
+    // let module = Module::new(&store, &wasm_bytes).unwrap();
 
     match Instance::new(&mut store, &module, &imports! {}) {
         Ok(_) => {}
