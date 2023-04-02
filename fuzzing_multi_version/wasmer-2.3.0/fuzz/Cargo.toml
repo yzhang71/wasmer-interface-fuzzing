@@ -39,6 +39,11 @@ path = "fuzz_targets/universal_cranelift.rs"
 required-features = ["universal", "cranelift"]
 
 [[bin]]
+name = "universal_cranelift_raw"
+path = "fuzz_targets/universal_cranelift_raw.rs"
+required-features = ["universal", "cranelift"]
+
+[[bin]]
 name = "universal_llvm"
 path = "fuzz_targets/universal_llvm.rs"
 required-features = ["universal", "llvm"]
