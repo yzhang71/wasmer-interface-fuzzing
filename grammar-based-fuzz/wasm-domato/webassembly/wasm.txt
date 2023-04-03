@@ -227,10 +227,10 @@
 <string> = "0x10FFFF"
 <string> = "0xE000"
 <string> = " 0xD7FF"
-<data> = (data (<num_type_i32>.const 0) "Hello, WebAssembly!")
-<data> = (data (<num_type_i32>.const 2) "\01\00\00\00") 
-<data> = (data (<num_type_i32>.const 4) "\00\00\80\3F") 
-<data> = (data (<num_type_i32>.const 8) "Hello, World!") 
+<data> = (data (<num_type_i32>.const 0) <string>)
+<data> = (data (<num_type_i32>.const 2) <string>) 
+<data> = (data (<num_type_i32>.const 4) <string>) 
+<data> = (data (<num_type_i32>.const 8) <string>) 
 
 <func_ref_a> = (func $func_ref_a <result_i32> (<num_type_i32>.const 42))
 <func_ref_b> = (func $func_ref_b)
