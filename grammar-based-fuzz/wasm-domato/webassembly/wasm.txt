@@ -247,6 +247,15 @@
 <local_opers> = (func $local_tee (param i32) <result_i32> <local_i32> <local_set_get> <local_tee>)
 <local_opers> = (func $local_tee (param i32) <result_i32> <local_i32> <local_set_get> <local_tee>) (export "local_tee" (func $local_tee))
 
+<sum_name> = sum_n
+<local_init_sum> = (local $sum <num_type_i32>)
+<local_init_i> = (local $i <num_type_i32>)
+<init_sum> = <num_type_i32>.const 0 local.set $sum
+<set_iter> = <num_type_i32>.const 1 local.set $i
+<ret_sum> = local.get $sum
+<loop_body> = 
+<loop_func> = (func $<sum_name> (export "<sum_name>") (param $n <num_type_i32>) <result_i32> <local_init_sum> <local_init_i> <init_sum> <set_iter> <loop_body> <ret_sum>)
+
 <module> = (module <local_opers> <ref_func> <data> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
 <module> = (module <local_opers> <ref_func> <globals> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
 <module> = (module <local_opers> <ref_func> <memory> <funcs_even> <tables> <export_is_even> <data> <data> <store_load_func_f32> <export_store> <export_load>)
