@@ -221,9 +221,9 @@
 <data> = (data (<num_type_i32>.const 0) "Hello, WebAssembly!")
 <data> = (data (<num_type_i32>.const 2) "\00\00\80\3F") 
 <data> = (data (<num_type_i32>.const 4) "こんにちは、WebAssembly！") 
-<data> = (data (<num_type_i32>.const 8) "®") 
-<data> = (data (<num_type_i32>.const 16) "👯") 
-<data> = (data (<num_type_i32>.const 32) "🌀") 
+<data> = (data (<num_type_i32>.const 8) "®🦀") 
+<data> = (data (<num_type_i32>.const 16) "👯⛔") 
+<data> = (data (<num_type_i32>.const 32) "🌀📂") 
 
 <func_ref_a> = (func $func_ref_a <result_i32> (<num_type_i32>.const 42))
 <func_ref_b> = (func $func_ref_b)
@@ -253,16 +253,15 @@
 <loop_body> = (loop $loop <loop_terminate> <add_iter_sum> <incre_iter> <continue_loop>)
 <loop_func> = (func $<sum_name> (export "<sum_name>") (param $n <num_type_i32>) <result_i32> <local_init_sum> <local_init_i> <init_sum> <set_iter> <loop_body> <ret_sum>)
 
-<module> = (module <local_opers> <ref_func> <data> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
-<module> = (module <local_opers> <ref_func> <globals> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
-<module> = (module <local_opers> <ref_func> <memory> <funcs_even> <tables> <export_is_even> <data> <data> <store_load_func_f32> <export_store> <export_load>)
-<module> = (module <local_opers> <ref_func> <globals> <funcs> <funcs_even> <export_is_even> <tables> <elems>)
+<module> = (module <ref_func> <data> <local_opers> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
+<module> = (module <local_opers> <loop_func> <ref_func> <globals> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
+<module> = (module <ref_func> <local_opers> <memory> <funcs_even> <tables> <export_is_even> <data> <data> <store_load_func_f32> <export_store> <export_load>)
+<module> = (module <local_opers> <loop_func> <ref_func> <globals> <funcs> <funcs_even> <export_is_even> <tables> <elems>)
 <module> = (module <local_opers> <ref_func> <globals> <data> <data>)
-<module> = (module <local_opers> <ref_func> <funcs_even> <export_is_even>)
+<module> = (module <loop_func> <local_opers> <ref_func> <funcs_even> <export_is_even>)
 <module> = (module <local_opers> <ref_func> <type_func> <data> <data>)
 <module> = (module <local_opers> <ref_func> <type_func> <memory> <tables> <funcs_even> <export_is_even> <data> <data> <store_load_func_f64> <export_store> <export_load>)
-<module> = (module <local_opers> <ref_func> <globals> <funcs_even> <tables> <export_is_even> <funcs> (export "<funcname>" (func $<funcname>)))
-<module> = (module <loop_func>)
+<module> = (module <loop_func> <local_opers> <ref_func> <globals> <funcs_even> <tables> <export_is_even> <funcs> (export "<funcname>" (func $<funcname>)))
 
 !begin lines
 <module>;

@@ -20,6 +20,9 @@ wasmer-compiler = { path = "../lib/compiler", optional = true }
 wasmer-middlewares = { path = "../lib/middlewares" }
 wasmprinter = "0.2"
 
+[profile.dev]
+overflow-checks = true
+
 [features]
 cranelift = [ "wasmer-compiler-cranelift" ]
 llvm = [ "wasmer-compiler-llvm" ]
