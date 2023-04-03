@@ -221,12 +221,10 @@
 <string> = "Hello, WebAssembly!"
 <string> = "\01\00\00\00"
 <string> = "\00\00\80\3F"
-<string> = "null"
-<string> = "true"
-<string> = "false"
-<string> = "0x10FFFF"
-<string> = "0xE000"
-<string> = " 0xD7FF"
+<string> = "WebAssembly is awesome?"
+<string> = "Rust and WebAssembly"
+<string> = "WASM with JavaScript"
+<string> = "Hello, World!"
 <data> = (data (<num_type_i32>.const 0) <string>)
 <data> = (data (<num_type_i32>.const 2) <string>) 
 <data> = (data (<num_type_i32>.const 4) <string>) 
@@ -253,7 +251,11 @@
 <init_sum> = <num_type_i32>.const 0 local.set $sum
 <set_iter> = <num_type_i32>.const 1 local.set $i
 <ret_sum> = local.get $sum
-<loop_body> = 
+<loop_terminate> = local.get $i local.get $n i32.gt_s if br $loop end
+<add_iter_sum> = local.get $sum local.get $i i32.add local.set $sum
+<incre_iter> = local.get $i i32.const 1 i32.add local.set $i
+<continue_loop> = br $loop
+<loop_body> = (loop $loop <loop_terminate> <add_iter_sum> <incre_iter> <continue_loop>)
 <loop_func> = (func $<sum_name> (export "<sum_name>") (param $n <num_type_i32>) <result_i32> <local_init_sum> <local_init_i> <init_sum> <set_iter> <loop_body> <ret_sum>)
 
 <module> = (module <local_opers> <ref_func> <data> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
@@ -265,6 +267,7 @@
 <module> = (module <local_opers> <ref_func> <type_func> <data> <data>)
 <module> = (module <local_opers> <ref_func> <type_func> <memory> <tables> <funcs_even> <export_is_even> <data> <data> <store_load_func_f64> <export_store> <export_load>)
 <module> = (module <local_opers> <ref_func> <globals> <funcs_even> <tables> <export_is_even> <funcs> (export "<funcname>" (func $<funcname>)))
+<module> = (module <loop_func>)
 
 !begin lines
 <module>;
