@@ -218,17 +218,12 @@
 <export_store> = (export "store_value" (func $store_value))
 <export_load> = (export "load_value" (func $load_value))
 
-<string> = "Hello, WebAssembly!"
-<string> = "\01\00\00\00"
-<string> = "\00\00\80\3F"
-<string> = "WebAssembly is awesome?"
-<string> = "Rust and WebAssembly"
-<string> = "WASM with JavaScript"
-<string> = "Hello, World!"
-<data> = (data (<num_type_i32>.const 0) <string>)
-<data> = (data (<num_type_i32>.const 2) <string>) 
-<data> = (data (<num_type_i32>.const 4) <string>) 
-<data> = (data (<num_type_i32>.const 8) <string>) 
+<data> = (data (<num_type_i32>.const 0) "Hello, WebAssembly!")
+<data> = (data (<num_type_i32>.const 2) "\00\00\80\3F") 
+<data> = (data (<num_type_i32>.const 4) "こんにちは、WebAssembly！") 
+<data> = (data (<num_type_i32>.const 8) "®") 
+<data> = (data (<num_type_i32>.const 16) "👯") 
+<data> = (data (<num_type_i32>.const 32) "🌀") 
 
 <func_ref_a> = (func $func_ref_a <result_i32> (<num_type_i32>.const 42))
 <func_ref_b> = (func $func_ref_b)
