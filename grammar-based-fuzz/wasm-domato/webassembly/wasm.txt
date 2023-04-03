@@ -218,6 +218,15 @@
 <export_store> = (export "store_value" (func $store_value))
 <export_load> = (export "load_value" (func $load_value))
 
+<string> = "Hello, WebAssembly!"
+<string> = "\01\00\00\00"
+<string> = "\00\00\80\3F"
+<string> = "null"
+<string> = "true"
+<string> = "false"
+<string> = "0x10FFFF"
+<string> = "0xE000"
+<string> = " 0xD7FF"
 <data> = (data (<num_type_i32>.const 0) "Hello, WebAssembly!")
 <data> = (data (<num_type_i32>.const 2) "\01\00\00\00") 
 <data> = (data (<num_type_i32>.const 4) "\00\00\80\3F") 
