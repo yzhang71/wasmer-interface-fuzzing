@@ -257,15 +257,13 @@
 <start_func> = (func $store_num (<num_type_i32>.store (<num_type_i32>.const 0) (<num_type_i32>.const 42))) 
 <start> = (memory 1) (export "memory" (memory 0)) <start_func> <strat_body>
 
-<module> = (module <ref_func> <data> <local_opers> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
-<module> = (module <local_opers> <loop_func> <ref_func> <globals> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
-<module> = (module <ref_func> <local_opers> <memory> <funcs_even> <tables> <export_is_even> <data> <data> <store_load_func_f32> <export_store> <export_load>)
-<module> = (module <local_opers> <loop_func> <start> <ref_func> <globals> <funcs> <funcs_even> <export_is_even> <tables> <elems>)
-<module> = (module <local_opers> <ref_func> <globals> <data> <data> <start>)
-<module> = (module <loop_func> <local_opers> <start> <ref_func> <funcs_even> <export_is_even>)
-<module> = (module <local_opers> <start> <ref_func> <type_func> <data> <data>)
-<module> = (module <local_opers> <ref_func> <type_func> <memory> <tables> <funcs_even> <export_is_even> <data> <data> <store_load_func_f64> <export_store> <export_load>)
-<module> = (module <loop_func> <local_opers> <start> <ref_func> <globals> <funcs_even> <tables> <export_is_even> <funcs> (export "<funcname>" (func $<funcname>)))
+<ctz_inst> = (i32.ctz (local.get $arg))
+<clz_inst> = (i32.clz (local.get $arg))
+<popcnt_inst> = (i32.popcnt (local.get $arg)) 
+<unop_body> = (func $operations (param $arg <num_type_i32>) <result_i32> (i32.add (i32.add <ctz_inst> <clz_inst>)<popcnt_inst>))
+<unop_inst> = <unop_body>
+
+<module> = (module <unop_inst>)
 
 !begin lines
 <module>;
