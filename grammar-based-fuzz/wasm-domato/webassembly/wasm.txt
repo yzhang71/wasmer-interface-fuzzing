@@ -253,6 +253,7 @@
 <loop_body> = (loop $loop <loop_terminate> <add_iter_sum> <incre_iter> <continue_loop>)
 <loop_func> = (func $<sum_name> (export "<sum_name>") (param $n <num_type_i32>) <result_i32> <local_init_sum> <local_init_i> <init_sum> <set_iter> <loop_body> <ret_sum>)
 
+<start> = 
 <module> = (module <ref_func> <data> <local_opers> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
 <module> = (module <local_opers> <loop_func> <ref_func> <globals> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
 <module> = (module <ref_func> <local_opers> <memory> <funcs_even> <tables> <export_is_even> <data> <data> <store_load_func_f32> <export_store> <export_load>)
