@@ -272,7 +272,7 @@
 <func> = <unop_body>
 <func> = <mem_func>
 
-<funcs nonrecursive=true p=0.05> = <func>
+<funcs nonrecursive=true p=0.01> = <func>
 <funcs> = <funcs> <func>
 
 <module> = (module <funcs> <datas> <elems> <tables> <memory>)
