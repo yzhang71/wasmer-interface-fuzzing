@@ -63,6 +63,36 @@
 <type_instruction> = (<num_type>.mul (local.get $x) (<num_type>.const <num_value>))
 <type_func> = <type> (func $double (type <typy_name>) <type_params> <result> <type_instruction>)
 
+<globalname> = $globalname_a 
+<globalname> = $globalname_b
+<globalname> = $globalname_c
+<globalname> = $globalname_d
+<globalname> = $globalname_e 
+<globalname> = $globalname_f
+<globalname> = $globalname_g
+<globalname> = $globalname_h
+<global_mutability> = mut
+<global_type> = <num_type>
+<global_value> = <num_type>.const <num_value>
+<global> = (global <globalname> (<global_mutability> <global_type>) <global_value>)
+<globals> = <global> <global> <global> <global> <global> <global> <global>
+<globals> = <global> <global> <global> <global> <global> <global>
+<globals> = <global> <global> <global> <global> <global>
+<globals> = <global> <global> <global> <global>
+<globals> = <global> <global> <global>
+<globals> = <global> <global>
+<globals> = <global>
+
+<func_idx> = $<funcname>
+<offset> = <num_value>
+<elem> = (elem (<num_type>.const <offset>) <func_idx>)
+<elems> = <elem> <elem> <elem> <elem> <elem> <elem>
+<elems> = <elem> <elem> <elem> <elem> <elem>
+<elems> = <elem> <elem> <elem> <elem>
+<elems> = <elem> <elem> <elem>
+<elems> = <elem> <elem> 
+<elems> = <elem>
+
 <mem_name> = $mem
 <mem_func_name> = $mem_func
 <memory_create> = (memory <mem_name> <num_value>)
@@ -252,36 +282,6 @@
 <funcs> = <func> <func> <func>
 <funcs> = <func> <func>
 <funcs> = <func>
-
-<globalname> = $globalname_a 
-<globalname> = $globalname_b
-<globalname> = $globalname_c
-<globalname> = $globalname_d
-<globalname> = $globalname_e 
-<globalname> = $globalname_f
-<globalname> = $globalname_g
-<globalname> = $globalname_h
-<global_mutability> = mut
-<global_type> = <num_type>
-<global_value> = <num_type>.const <num_value>
-<global> = (global <globalname> (<global_mutability> <global_type>) <global_value>)
-<globals> = <global> <global> <global> <global> <global> <global> <global>
-<globals> = <global> <global> <global> <global> <global> <global>
-<globals> = <global> <global> <global> <global> <global>
-<globals> = <global> <global> <global> <global>
-<globals> = <global> <global> <global>
-<globals> = <global> <global>
-<globals> = <global>
-
-<func_idx> = $<funcname>
-<offset> = <num_value>
-<elem> = (elem (<num_type>.const <offset>) <func_idx>)
-<elems> = <elem> <elem> <elem> <elem> <elem> <elem>
-<elems> = <elem> <elem> <elem> <elem> <elem>
-<elems> = <elem> <elem> <elem> <elem>
-<elems> = <elem> <elem> <elem>
-<elems> = <elem> <elem> 
-<elems> = <elem>
 
 <module> = (module <funcs> <datas> <elems> <tables> <memory>)
 
