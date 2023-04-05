@@ -4,11 +4,14 @@ import random
 import sys
 import hashlib
 
+reload(sys)  
+sys.setdefaultencoding('utf8')
+
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(parent_dir)
 from grammar import Grammar
 
-_N_MAIN_LINES = 10000
+_N_MAIN_LINES = 10
 
 def generate_wasm_code(wasmgrammar, num_lines):
     wasm = ''
@@ -58,7 +61,7 @@ def generate_samples(grammar_dir, outfiles):
         template = f.read()
 
     wasmgrammar = Grammar()
-    err = wasmgrammar.parse_from_file(os.path.join(grammar_dir, 'wasm.txt'))
+    err = wasmgrammar.parse_from_file(os.path.join(grammar_dir, 'wasm_grammar.txt'))
     if err > 0:
         print('There were errors parsing grammar')
         return
