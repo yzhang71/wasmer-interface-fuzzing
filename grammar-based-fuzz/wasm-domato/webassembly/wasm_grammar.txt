@@ -16,22 +16,32 @@
 <func_arithmetic> = (func $<funcname> <params> <result> <instructions>)
 
 <rem> = rem
-<set_rem> = (set_local $<rem> (<num_type>.rem_u (get_local <varname_a>) (<num_type>.const <num_value>)))
+<set_rem> = (set_local $<rem> (<num_type>.rem_u (get_local <varname>) (<num_type>.const <num_value>)))
 <get_rem> = (<num_type>.eqz (get_local $<rem>))
 <local_rem> = (local $<rem> <num_type>)
 <func_body_even> = <local_rem> <set_rem> <get_rem>
-<params_even> = (param <varname_a> <num_type>)
+<params_even> = (param <varname> <num_type>)
 <funcname_even> = is_even
 <export_is_even> = (export "<funcname_even>" (func $<funcname_even>))
 <funcs_even> = (func $<funcname_even> <params_even> <result> <func_body_even>)
 
+<id> = 0
+<id> = 1
+<id> = 2
+<id> = 3
+<id> = 4
+<id> = 5
+<id> = 6
+<id> = 7
+<id> = 8
+<id> = 9
 <min> = <num_type>
 <max> = <num_type>
 <limits> = <min> 
 <limits> = <max>
 <elem_type> = funcref
 <table_type> = <limits> <elem_type>
-<table_id> = $table_<num_value>
+<table_id> = $table_<id>
 <table> = (table <table_id> <table_type>)
 <table_func> = (func $func_a)
 <table_func> = (func $func_b)
@@ -50,7 +60,7 @@
 <typy_name> = $random_type
 <type> = (type <typy_name> (func (param <num_type>) (result <num_type>)))
 <type_params> = (param $x <num_type>)
-<type_instruction> = (<num_type>.mul (local.get $x) (<num_type>.const <integer>))
+<type_instruction> = (<num_type>.mul (local.get $x) (<num_type>.const <num_value>))
 <type_func> = <type> (func $double (type <typy_name>) <type_params> <result> <type_instruction>)
 
 <mem_name> = $mem
@@ -168,8 +178,8 @@
 <data> = (data (<num_type>.const <num_value>) "Hello, WebAssembly!こんにちは、WebAssembly！")
 <data> = (data (<num_type>.const <num_value>) "\00\00\80\3Fこんにちは、WebAssembly！") 
 <data> = (data (<num_type>.const <num_value>) "こんにちは、WebAssembly！") 
-<data> = (data (<num_type>.const <num_value>) "®🦀"こんにちは、WebAssembly！) 
-<data> = (data (<num_type>.const <num_value>) "👯⛔"こんにちは、WebAssembly！) 
+<data> = (data (<num_type>.const <num_value>) "®🦀こんにちは、WebAssembly！") 
+<data> = (data (<num_type>.const <num_value>) "👯⛔こんにちは、WebAssembly！") 
 <data> = (data (<num_type>.const <num_value>) "🌀📂🎯🐑🌀Привет, мир!📂📝⬇️🏃‍♀️✨📦📂📝⬇️🏃‍♀️✨📦")
 <data> = (data (<num_type>.const <num_value>) "🐑🌀Привет, мир!📂⚠️") 
 <data> = (data (<num_type>.const <num_value>) "🐑🌀⬇️🏃‍♀️✨🏃‍♀️✨📦📂📝⬇️📦📂") 
