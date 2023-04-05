@@ -270,18 +270,10 @@
 <func> = <loop_func>
 <func> = <start>
 <func> = <unop_body>
-<funcs> = <func> <func> <func> <func> <func> <func> <func> <func> <func> <func> <func> <func>
-<funcs> = <func> <func> <func> <func> <func> <func> <func> <func> <func> <func> <func>
-<funcs> = <func> <func> <func> <func> <func> <func> <func> <func> <func> <func>
-<funcs> = <func> <func> <func> <func> <func> <func> <func> <func> <func>
-<funcs> = <func> <func> <func> <func> <func> <func> <func> <func>
-<funcs> = <func> <func> <func> <func> <func> <func> <func>
-<funcs> = <func> <func> <func> <func> <func> <func>
-<funcs> = <func> <func> <func> <func> <func>
-<funcs> = <func> <func> <func> <func>
-<funcs> = <func> <func> <func>
-<funcs> = <func> <func>
-<funcs> = <func>
+<func> = <mem_func>
+
+<funcs nonrecursive=true p=0.05> = <func>
+<funcs> = <funcs> <func>
 
 <module> = (module <funcs> <datas> <elems> <tables> <memory>)
 
