@@ -263,16 +263,31 @@
 <unop_body> = (func $operations (param $arg <num_type_i32>) <result_i32> (i32.add (i32.add <ctz_inst> <clz_inst>)<popcnt_inst>))
 <unop_inst> = <unop_body>
 
-<module> = (module <ref_func> <data> <unop_inst> <local_opers> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
-<module> = (module <local_opers> <loop_func> <ref_func> <globals> <unop_inst> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
-<module> = (module <ref_func> <local_opers> <memory> <funcs_even> <tables> <export_is_even> <data> <data> <store_load_func_f32> <export_store> <export_load>)
-<module> = (module <local_opers> <unop_inst> <loop_func> <start> <ref_func> <globals> <funcs> <funcs_even> <export_is_even> <tables> <elems>)
-<module> = (module <local_opers> <ref_func> <globals> <data> <data> <unop_inst> <start>)
-<module> = (module <loop_func> <local_opers> <start> <ref_func> <funcs_even> <unop_inst> <export_is_even>)
-<module> = (module <local_opers> <start> <ref_func> <type_func> <unop_inst> <data> <data>)
-<module> = (module <local_opers> <ref_func> <type_func> <memory> <unop_inst> <tables> <funcs_even> <export_is_even> <data> <data> <store_load_func_f64> <export_store> <export_load>)
-<module> = (module <loop_func> <local_opers> <start> <ref_func> <unop_inst> <globals> <funcs_even> <tables> <export_is_even> <funcs> (export "<funcname>" (func $<funcname>)))
+<wrap_name> = $wrap
+<extend_name> = $extend
+<trunc_name> = $trunc
+<wrap_body> = <num_type_i32>.wrap_i64
+<extend_body> = <num_type_i32>.extend8_s
+<trunc_body> = <num_type_i32>.trunc_f64_s
+<wrap_func> = (func <wrap_name> (param $input <num_type_i64>) <result_i32> (<wrap_body> (local.get $input)))
+<extend_func> = (func <extend_name> (param $input <num_type_i32>) <result_i32> (<extend_body> (local.get $input)))
+<trunc_func> = (func <trunc_name> (param $input <num_type_f64>) <result_i32> (<trunc_body> (local.get $input)))
+<export_wrap> = (export "wrap" (func <wrap_name>))
+<export_extend> = (export "extend" (func <extend_name>))
+<export_trunc> = (export "trunc" (func <trunc_name>))
+<cvtop_funcs> = <wrap_func> <extend_func> <trunc_func> <export_wrap> <export_extend> <export_trunc>
+
+<module> = (module <ref_func> <data> <cvtop_funcs> <unop_inst> <local_opers> <data> <globals> <funcs_even> <export_is_even> <funcs> <tables> <elems> <memory> <store_load_func_i64> <export_store> <export_load>)
+<module> = (module <local_opers> <cvtop_funcs> <loop_func> <ref_func> <globals> <unop_inst> <funcs> <tables> <funcs_even> <export_is_even> <elems> <memory> <store_load_func_i32> <export_store> <export_load>)
+<module> = (module <ref_func> <local_opers> <memory> <funcs_even> <cvtop_funcs> <tables> <export_is_even> <data> <data> <store_load_func_f32> <export_store> <export_load>)
+<module> = (module <local_opers> <unop_inst> <cvtop_funcs> <loop_func> <start> <ref_func> <globals> <funcs> <funcs_even> <export_is_even> <tables> <elems>)
+<module> = (module <local_opers> <ref_func> <globals> <data> <data> <unop_inst> <cvtop_funcs> <start>)
+<module> = (module <cvtop_funcs> <loop_func> <local_opers> <start> <ref_func> <funcs_even> <unop_inst> <export_is_even>)
+<module> = (module <local_opers> <start> <ref_func> <cvtop_funcs> <type_func> <unop_inst> <data> <data>)
+<module> = (module <local_opers> <ref_func> <cvtop_funcs> <type_func> <memory> <unop_inst> <tables> <funcs_even> <export_is_even> <data> <data> <store_load_func_f64> <export_store> <export_load>)
+<module> = (module <loop_func> <local_opers> <start> <ref_func> <cvtop_funcs> <unop_inst> <globals> <funcs_even> <tables> <export_is_even> <funcs> (export "<funcname>" (func $<funcname>)))
 
 !begin lines
 <module>;
 !end lines
+

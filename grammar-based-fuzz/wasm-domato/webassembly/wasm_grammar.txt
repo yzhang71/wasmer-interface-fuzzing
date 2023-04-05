@@ -215,6 +215,19 @@
 <set_global> = (func $set_global (param <value> <num_type>) get_local <value> set_global <global_name>)
 <get_global> = (func $get_global <result> get_global <global_name>)
 
+<cvtop_name> = wrap
+<cvtop_name> = extend
+<cvtop_name> = trunc
+<cvtop_body> = <num_type>.wrap_i64
+<cvtop_body> = <num_type>.extend8_s
+<cvtop_body> = <num_type>.trunc_f64_s
+<cvtop_func> = (func <cvtop_name> (param $input <num_type>) <result> (<cvtop_body> (local.get $input)))
+<cvtop_export> = (export "cvtop_name" (func $<cvtop_name>))
+<cvtop_funcs> = <cvtop_func> <cvtop_func> <cvtop_func> <cvtop_export> <cvtop_export> <cvtop_export>
+<cvtop_funcs> = <cvtop_func> <cvtop_func> <cvtop_export> <cvtop_export>
+<cvtop_funcs> = <cvtop_func> <cvtop_export>
+
+<func> = <cvtop_funcs>
 <func> = <func_arithmetic> 
 <func> = <funcs_even> <export_is_even>
 <func> = <set_global> <get_global> 
