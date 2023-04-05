@@ -66,7 +66,6 @@
 <mem_name> = $mem
 <mem_func_name> = $mem_func
 <memory_create> = (memory <mem_name> <num_value>)
-<memory> = <memory_create> <data> <mem_func>
 <mem_size> = (local $mem_size <num_type>)
 <mem_grow> = (local $mem_grow <num_type>)
 <set_size> = (local.set $mem_size (memory.size))
@@ -75,6 +74,7 @@
 <memory_copy> = (memory.copy (<num_type>.const <num_value>) (<num_type>.const <num_value>) (<num_type>.const <num_value>))
 <memory_init> = (memory.init <num_value> (<num_type>.const <num_value>) (<num_type>.const <num_value>) (<num_type>.const <num_value>))
 <mem_func> = (func <mem_func_name> <mem_size> <mem_grow> <set_size> <set_grow> <memory_fill> <memory_copy> <memory_init>)
+<memory> = <memory_create> <data> <mem_func>
 
 <export_store> = (export "store_value" (func $store_value))
 <export_load> = (export "load_value" (func $load_value)) 
@@ -116,11 +116,6 @@
 <popcnt_inst> = (<num_type>.popcnt (local.get $arg)) 
 <unop_body> = (func $operations (param $arg <num_type>) <result> (<num_type>.add (<num_type>.add <ctz_inst> <clz_inst>)<popcnt_inst>))
 <unop_inst> = <unop_body>
-
-<module> = (module <memory>)
-<module> = (module <memory>)
-<module> = (module <memory> )
-<module> = (module <memory> )
 
 <result> = (result <num_type>)
 
@@ -199,6 +194,13 @@
 <data> = (data (<num_type>.const <num_value>) "🌀📂🎯📝⬇️🏃‍♀️✨📦📂📝⬇️📂") 
 <data> = (data (<num_type>.const <num_value>) "👯⛔🏃‍♀️✨📦📂🐑🌀Привет, мир!📂📝⬇️🌀📂") 
 <data> = (data (<num_type>.const <num_value>) "にちは🌀🏃‍♀️✨📦📂📝⬇️🏃‍♀️📂") 
+<datas> = <data> <data> <data> <data> <data> <data> <data>
+<datas> = <data> <data> <data> <data> <data> <data>
+<datas> = <data> <data> <data> <data> <data>
+<datas> = <data> <data> <data> <data>
+<datas> = <data> <data> <data>
+<datas> = <data> <data>
+<datas> = <data>
 
 <address> = $address
 <value> = $value
@@ -218,7 +220,6 @@
 <func> = <set_global> <get_global> 
 <func> = <table_operation>
 <func> = <type_func>
-<func> = <mem_func>
 <func> = <store_func> <export_store>
 <func> = <load_func> <export_load>
 <func> = <ref_func>
@@ -226,39 +227,6 @@
 <func> = <loop_func>
 <func> = <start>
 <func> = <unop_body>
-
-<globalname> = $globalname_a 
-<globalname> = $globalname_b
-<globalname> = $globalname_c
-<globalname> = $globalname_d
-<globalname> = $globalname_e 
-<globalname> = $globalname_f
-<globalname> = $globalname_g
-<globalname> = $globalname_h
-<global_mutability> = mut
-<global_type> = <num_type>
-<global_value> = <num_type>.const <num_value>
-<global> = (global <globalname> (<global_mutability> <global_type>) <global_value>)
-
-<func_idx> = $<funcname>
-<offset> = <num_value>
-<elem> = (elem (<num_type>.const <offset>) <func_idx>)
-<elems> = <elem> <elem> <elem> <elem> <elem> <elem>
-<elems> = <elem> <elem> <elem> <elem> <elem>
-<elems> = <elem> <elem> <elem> <elem>
-<elems> = <elem> <elem> <elem>
-<elems> = <elem> <elem> 
-<elems> = <elem>
-
-<globals> = <global> <global> <global> <global> <global> <global> <global>
-<globals> = <global> <global> <global> <global> <global> <global>
-<globals> = <global> <global> <global> <global> <global>
-<globals> = <global> <global> <global> <global>
-<globals> = <global> <global> <global>
-<globals> = <global> <global>
-<globals> = <global>
-
-<funcs> = <func> <func> <func> <func> <func> <func> <func> <func> <func> <func> <func> <func> <func>
 <funcs> = <func> <func> <func> <func> <func> <func> <func> <func> <func> <func> <func> <func>
 <funcs> = <func> <func> <func> <func> <func> <func> <func> <func> <func> <func> <func>
 <funcs> = <func> <func> <func> <func> <func> <func> <func> <func> <func> <func>
@@ -272,15 +240,37 @@
 <funcs> = <func> <func>
 <funcs> = <func>
 
-<datas> = <data> <data> <data> <data> <data> <data> <data>
-<datas> = <data> <data> <data> <data> <data> <data>
-<datas> = <data> <data> <data> <data> <data>
-<datas> = <data> <data> <data> <data>
-<datas> = <data> <data> <data>
-<datas> = <data> <data>
-<datas> = <data>
+<globalname> = $globalname_a 
+<globalname> = $globalname_b
+<globalname> = $globalname_c
+<globalname> = $globalname_d
+<globalname> = $globalname_e 
+<globalname> = $globalname_f
+<globalname> = $globalname_g
+<globalname> = $globalname_h
+<global_mutability> = mut
+<global_type> = <num_type>
+<global_value> = <num_type>.const <num_value>
+<global> = (global <globalname> (<global_mutability> <global_type>) <global_value>)
+<globals> = <global> <global> <global> <global> <global> <global> <global>
+<globals> = <global> <global> <global> <global> <global> <global>
+<globals> = <global> <global> <global> <global> <global>
+<globals> = <global> <global> <global> <global>
+<globals> = <global> <global> <global>
+<globals> = <global> <global>
+<globals> = <global>
 
-<module> = (module <funcs> <datas> <elems> <tables>)
+<func_idx> = $<funcname>
+<offset> = <num_value>
+<elem> = (elem (<num_type>.const <offset>) <func_idx>)
+<elems> = <elem> <elem> <elem> <elem> <elem> <elem>
+<elems> = <elem> <elem> <elem> <elem> <elem>
+<elems> = <elem> <elem> <elem> <elem>
+<elems> = <elem> <elem> <elem>
+<elems> = <elem> <elem> 
+<elems> = <elem>
+
+<module> = (module <funcs> <datas> <elems> <tables> <memory>)
 
 !begin lines
 <module>;
