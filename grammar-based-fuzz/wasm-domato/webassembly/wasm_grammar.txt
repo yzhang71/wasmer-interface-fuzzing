@@ -224,13 +224,8 @@
 <data> = (data (<num_type>.const <num_value>) "🌀📂🎯📝⬇️🏃‍♀️✨📦📂📝⬇️📂") 
 <data> = (data (<num_type>.const <num_value>) "👯⛔🏃‍♀️✨📦📂🐑🌀Привет, мир!📂📝⬇️🌀📂") 
 <data> = (data (<num_type>.const <num_value>) "にちは🌀🏃‍♀️✨📦📂📝⬇️🏃‍♀️📂") 
-<datas> = <data> <data> <data> <data> <data> <data> <data>
-<datas> = <data> <data> <data> <data> <data> <data>
-<datas> = <data> <data> <data> <data> <data>
-<datas> = <data> <data> <data> <data>
-<datas> = <data> <data> <data>
-<datas> = <data> <data>
-<datas> = <data>
+<datas nonrecursive=true p=0.1> = <data>
+<datas> = <datas> <data>
 
 <address> = $address
 <value> = $value
@@ -272,10 +267,10 @@
 <func> = <unop_body>
 <func> = <mem_func>
 
-<funcs nonrecursive=true p=0.01> = <func>
+<funcs nonrecursive=true p=0.1> = <func>
 <funcs> = <funcs> <func>
 
-<module> = (module <funcs> <datas> <elems> <tables> <memory>)
+<module> = (module <funcs> <datas> <elems> <tables> <memory> <globals>)
 
 !begin lines
 <module>;
