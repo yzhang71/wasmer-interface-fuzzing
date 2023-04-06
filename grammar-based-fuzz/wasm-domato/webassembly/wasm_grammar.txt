@@ -37,12 +37,11 @@
 <id> = 9
 <min> = <num_type>
 <max> = <num_type>
-<limits> = <min> 
-<limits> = <max>
+<limits> = <min> <max>
 <elem_type> = funcref
-<table_type> = <limits> <elem_type>
+<table_type> = <elem_type>
 <table_id> = $table_<id>
-<table> = (table <table_id> <table_type>)
+<table> = (table <table_id> <limits> <table_type>)
 <table_func> = (func $func_a)
 <table_func> = (func $func_b)
 <table_func> = (func $func_c)
@@ -51,11 +50,20 @@
 <table_func> = (func $func_f)
 <table_func> = (func $func_g)
 <table_func> = (func $func_h)
+<table_func> = (func $func_i)
+<table_func> = (func $func_j)
+<table_func> = (func $func_k)
+<table_func> = (func $func_l)
+<table_func> = (func $func_m)
+<table_func> = (func $func_n)
+<table_func> = (func $func_o)
+<table_func> = (func $func_p)
+<table_func> = (func $func_q)
+<table_funcs nonrecursive=true p=0.1> = <table_func>
+<table_funcs> = <table_funcs> <table_func>
 <table_operation> = (func $table_operations (drop (table.size <table_id>)))
-<tables> = <table_func> <table> <table_operation>
-<tables> = <table> <table> <table>
-<tables> = <table> <table>
-<tables> = <table>
+<tables nonrecursive=true p=0.1> = <table> <table_funcs> <table_operation>
+<tables> = <tables> <table> <table_funcs> <table_operation>
 
 <typy_name> = $random_type
 <type> = (type <typy_name> (func (param <num_type>) (result <num_type>)))
@@ -75,23 +83,29 @@
 <global_type> = <num_type>
 <global_value> = <num_type>.const <num_value>
 <global> = (global <globalname> (<global_mutability> <global_type>) <global_value>)
-<globals> = <global> <global> <global> <global> <global> <global> <global>
-<globals> = <global> <global> <global> <global> <global> <global>
-<globals> = <global> <global> <global> <global> <global>
-<globals> = <global> <global> <global> <global>
-<globals> = <global> <global> <global>
-<globals> = <global> <global>
-<globals> = <global>
+<globals nonrecursive=true p=0.1> = <global>
+<globals> = <globals> <global>
 
-<func_idx> = $<funcname>
+<func_idx> = $arithmetic
+<func_idx> = $table_operations
+<func_idx> = $double
+<func_idx> = $store_value
+<func_idx> = $load_value
+<func_idx> = $ref_operations
+<func_idx> = $local_tee
+<func_idx> = $sum_n
+<func_idx> = $operations
+<func_idx> = $store_num
+<func_idx> = $set_global
+<func_idx> = $get_global
+<func_idx> = $wrap
+<func_idx> = $extend
+<func_idx> = $trunc
+<func_idx> = $is_even
 <offset> = <num_value>
 <elem> = (elem (<num_type>.const <offset>) <func_idx>)
-<elems> = <elem> <elem> <elem> <elem> <elem> <elem>
-<elems> = <elem> <elem> <elem> <elem> <elem>
-<elems> = <elem> <elem> <elem> <elem>
-<elems> = <elem> <elem> <elem>
-<elems> = <elem> <elem> 
-<elems> = <elem>
+<elems nonrecursive=true p=0.1> = <elem>
+<elems> = <elems> <elem>
 
 <mem_name> = $mem
 <mem_func_name> = $mem_func
@@ -270,7 +284,7 @@
 <funcs nonrecursive=true p=0.1> = <func>
 <funcs> = <funcs> <func>
 
-<module> = (module <funcs> <datas> <elems> <tables> <memory> <globals>)
+<module> = (module <globals> <memory> <datas> <elems> <tables> <funcs>)
 
 !begin lines
 <module>;
