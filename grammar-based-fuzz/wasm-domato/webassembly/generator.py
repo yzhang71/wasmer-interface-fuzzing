@@ -11,7 +11,7 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.append(parent_dir)
 from grammar import Grammar
 
-_N_MAIN_LINES = 10
+_N_MAIN_LINES = 10000
 
 def generate_wasm_code(wasmgrammar, num_lines):
     wasm = ''
@@ -62,6 +62,7 @@ def generate_samples(grammar_dir, outfiles):
 
     wasmgrammar = Grammar()
     err = wasmgrammar.parse_from_file(os.path.join(grammar_dir, 'wasm_grammar.txt'))
+    # err = wasmgrammar.parse_from_file(os.path.join(grammar_dir, 'wasm.txt'))
     if err > 0:
         print('There were errors parsing grammar')
         return
@@ -82,9 +83,6 @@ def generate_samples(grammar_dir, outfiles):
             for line in lines:
                 if not line.strip():  # Skip empty lines
                     continue
-
-                # Remove the last character ';' of the line
-                line = line[:-1]
 
                 # Compute the md5 hash of the line
                 md5_hash = hashlib.md5(line.encode()).hexdigest()
