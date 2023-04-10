@@ -1,1 +1,0 @@
-(module (data (i32.const 32) "🌀📂") (elem (i32.const 0) $arithmetic) (elem (i32.const 0) $arithmetic) (elem (i32.const 0) $arithmetic) (elem (i32.const 0) $arithmetic) (elem (i32.const 0) $arithmetic))

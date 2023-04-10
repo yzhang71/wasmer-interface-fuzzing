@@ -1,1 +1,0 @@
-(module (memory 1) (export "memory" (memory 0)) (func $store_num (i32.store (i32.const 0) (i32.const 42))) (start $store_num) (data (i32.const 2) "\00\00\80\3F") (memory 1) (export "memory" (memory 0)) (func $store_num (i32.store (i32.const 0) (i32.const 42))) (start $store_num))

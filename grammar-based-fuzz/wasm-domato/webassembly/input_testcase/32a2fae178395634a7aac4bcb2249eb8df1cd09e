@@ -1,1 +1,0 @@
-(module (elem (i32.const 0) $arithmetic) (elem (i32.const 0) $arithmetic) (table $table_1 0 funcref))

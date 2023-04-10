@@ -1,1 +1,0 @@
-(module (data (i32.const 4) "こんにちは、WebAssembly！"))

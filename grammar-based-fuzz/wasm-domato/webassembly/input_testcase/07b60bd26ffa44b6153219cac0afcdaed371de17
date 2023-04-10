@@ -1,1 +1,0 @@
-(module (func $set_global (param $value f64) get_local $value set_global $globalname_h) (func $get_global (result f64) get_global $globalname_h) (func $arithmetic (param $var_c i64) (param $var_d i64) (result i64) get_local $var_c get_local $var_d i64.div))
