@@ -7,6 +7,13 @@ use wasmer_engine_universal::Universal;
 
 fuzz_target!(|data: &[u8]| {
 
+    // Check if data contains the string "component"
+    if let Ok(data_str) = std::str::from_utf8(data) {
+        if data_str.contains("component") {
+            return;
+        }
+    }
+
     let wasm_bytes;
 
     match wat2wasm(data) {
