@@ -21,6 +21,7 @@ fuzz_target!(|data: &[u8]| {
 
     // store code
     let result = cache.save_wasm(data);
+    drop(cache);
     match result {
         Ok(_) => return,
         Err(_) => return,
