@@ -1,0 +1,1 @@
+(modultable $table_1 0 funcref) (func $table_operations (drop (table.size $table_1))))

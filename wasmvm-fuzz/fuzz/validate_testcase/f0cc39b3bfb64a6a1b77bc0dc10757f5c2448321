@@ -1,0 +1,1 @@
+(memory.init(i32.cons0 uncref))

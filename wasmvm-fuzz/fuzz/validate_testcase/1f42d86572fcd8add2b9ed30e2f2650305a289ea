@@ -1,0 +1,1 @@
+(modul; (type $func_i64_i64 (ÿfunc (param i64) i64$(t(local.get $x))) (local.tee 0 (i32.add (local.get 0) (i32.const 1)))))
