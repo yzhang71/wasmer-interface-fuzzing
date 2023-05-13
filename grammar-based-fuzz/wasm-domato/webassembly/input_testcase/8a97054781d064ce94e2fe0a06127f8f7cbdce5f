@@ -1,1 +1,0 @@
-(module (func $set_global (param $value i32) get_local $value set_global $globalname_e) (func $get_global (result i32) get_global $globalname_a) (func $arithmetic (param $var_c i64) (param $var_d i64) (result i64) get_local $var_c get_local $var_d i64.sub) (func $func_b) (table $table_1 0 funcref) (func $table_operations (drop (table.size $table_1))))
